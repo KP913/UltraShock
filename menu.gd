@@ -95,7 +95,7 @@ func _ready():
 	
 	if songs == []:
 		$no_songs.show()
-		$Label.text += OS.get_user_data_dir()
+		$no_songs/Label.text += OS.get_user_data_dir()
 	
 	
 	var style = $Settings.get_theme_stylebox("panel").duplicate()
