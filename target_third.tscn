@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmbrwcpne14fj"]
+
+[ext_resource type="Script" uid="uid://cn6htdu86gxxk" path="res://target_third.gd" id="1_7iu81"]
+[ext_resource type="Texture2D" uid="uid://vvdxqg6q33gq" path="res://gfx/note_sheet.png" id="2_wb5fg"]
+[ext_resource type="Texture2D" uid="uid://dggmeteo5ppum" path="res://gfx/note_sheet_new.png" id="3_nsvdi"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(16, 16)
+
+[node name="target" type="Area2D"]
+script = ExtResource("1_7iu81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("2_wb5fg")
+offset = Vector2(-8, 0)
+hframes = 6
+vframes = 4
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+default_color = Color(0.51, 0.599833, 1, 1)
+
+[node name="note" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="note"]
+shape = SubResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="note"]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_nsvdi")
+hframes = 6
+vframes = 4
+
+[node name="note2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="note2"]
+shape = SubResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="note2"]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_nsvdi")
+hframes = 6
+vframes = 4
+region_rect = Rect2(64, 0, 64, 64)
+region_filter_clip_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

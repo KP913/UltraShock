@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30mm"
+   height="30mm"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="dsquare.svg"
+   inkscape:export-filename="dsquare.png"
+   inkscape:export-xdpi="216.74667"
+   inkscape:export-ydpi="216.74667"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="4.0000001"
+     inkscape:cx="57.624999"
+     inkscape:cy="54.874999"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#b32cad;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#df57cf;stop-opacity:1;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="0,15"
+       end_point="30,15"
+       center_point="15,15"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1.2"
+       lpesatellites=""
+       mode="horizontal"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false"
+       link_styles="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="2.8117504"
+       y1="5.1559176"
+       x2="27.204796"
+       y2="24.909016"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="rotate(-90,15.008319,15.032411)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:url(#linearGradient3);stroke:#000000;stroke-width:1.465"
+       d="m 18.503788,24.053843 -0.04063,4.564453 c 0,0.909555 -0.524633,1.375662 -1.454698,1.375662 H 12.97857 C 11.973576,29.979348 11.0976,29.60149 10.341789,28.807114 L 1.1452123,19.610538 c -1.036902,-0.9674 -1.099146,-1.315917 -1.099146,-2.443846 v -4.307341 c -0.0014,-0.994885 0.144382,-1.599086 1.145387,-2.439012 L 10.32425,1.2875426 c 1.065298,-1.12626999 1.717457,-1.17518599 2.701092,-1.21607599 h 3.975634 c 1.047176,-0.02184 1.462008,0.551461 1.449937,1.52655599 v 4.46028 c -0.01229,0.939603 0.642396,1.463157 1.543314,1.44451 l 8.518616,0.03305 c 0.898735,-0.05088 1.490483,0.430357 1.456335,1.996478 l -0.009,11.0137394 c -3.47e-4,1.209099 -0.357243,2.022031 -1.476657,1.987721 l -8.489108,0.02372 c -0.439249,0.01312 -0.805928,0.123037 -1.066291,0.374707 -0.244555,0.23639 -0.395314,0.597842 -0.424334,1.121611 z"
+       id="path1"
+       sodipodi:nodetypes="ccccccccccccccccccccscc"
+       inkscape:export-filename="dsquare.png"
+       inkscape:export-xdpi="206.87"
+       inkscape:export-ydpi="206.87" />
+  </g>
+</svg>

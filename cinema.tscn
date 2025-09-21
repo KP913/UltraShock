@@ -1,0 +1,383 @@
+[gd_scene load_steps=8 format=3 uid="uid://i1s1fjs0ftm8"]
+
+[ext_resource type="Script" uid="uid://dyklcf5tmmesi" path="res://cinema.gd" id="1_rte03"]
+[ext_resource type="Texture2D" uid="uid://bjht34ue81575" path="res://gfx/receiver.png" id="2_uw1q1"]
+[ext_resource type="Texture2D" uid="uid://bu2m1df6aoe6m" path="res://icon.png" id="3_qcvda"]
+[ext_resource type="Texture2D" uid="uid://bvml3dyfbej6f" path="res://gfx/svg/touch.png" id="4_6p77l"]
+[ext_resource type="Script" uid="uid://bel1k7nq45m47" path="res://pause.gd" id="6_rqh0o"]
+[ext_resource type="PackedScene" uid="uid://baowfc76krwer" path="res://settings.tscn" id="7_cdvet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pna0u"]
+radius = 13.0
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_rte03")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+metadata/_edit_lock_ = true
+
+[node name="Panel2" type="Sprite2D" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(500, 312)
+scale = Vector2(40.375, 26.75)
+texture = ExtResource("2_uw1q1")
+metadata/_edit_lock_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control"]
+process_mode = 3
+layout_mode = 0
+buffering_msec = 1000
+
+[node name="Panel" type="Panel" parent="Control"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 544.0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+modulate = Color(0, 0, 0, 0.356863)
+position = Vector2(488, 316)
+scale = Vector2(25, 15.375)
+texture = ExtResource("2_uw1q1")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="sync" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(43, 40)
+texture = ExtResource("3_qcvda")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.486275)
+offset_right = 40.0
+offset_bottom = 14.0
+text = "0"
+
+[node name="Label8" type="Label" parent="."]
+visible = false
+modulate = Color(0.79, 0.79, 0.79, 1)
+offset_left = 880.0
+offset_top = 72.0
+offset_right = 949.0
+offset_bottom = 95.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "FPS"
+horizontal_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -7.0
+
+[node name="touch" type="Node2D" parent="."]
+visible = false
+texture_filter = 1
+
+[node name="TouchScreenButton14" type="TouchScreenButton" parent="touch"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.627451)
+position = Vector2(40, 40)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_pna0u")
+action = "pause"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="touch/TouchScreenButton14"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("4_6p77l")
+hframes = 4
+vframes = 8
+frame = 26
+
+[node name="pause" type="Node2D" parent="."]
+process_mode = 3
+visible = false
+scale = Vector2(2, 2)
+script = ExtResource("6_rqh0o")
+
+[node name="Button" type="Button" parent="pause"]
+offset_left = 140.0
+offset_top = 80.0
+offset_right = 236.0
+offset_bottom = 112.0
+text = "Resume"
+
+[node name="Button2" type="Button" parent="pause"]
+offset_left = 244.0
+offset_top = 80.0
+offset_right = 340.0
+offset_bottom = 112.0
+text = "Retry"
+
+[node name="Button3" type="Button" parent="pause"]
+offset_left = 140.0
+offset_top = 176.0
+offset_right = 236.0
+offset_bottom = 208.0
+text = "Exit"
+
+[node name="Button4" type="Button" parent="pause"]
+offset_left = 244.0
+offset_top = 176.0
+offset_right = 340.0
+offset_bottom = 208.0
+text = "Editor"
+
+[node name="Button5" type="Button" parent="pause"]
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 288.0
+offset_bottom = 160.0
+text = "Settings"
+
+[node name="touchconfig" type="Node2D" parent="pause"]
+process_mode = 3
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="pause/touchconfig"]
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 64.0
+offset_bottom = 197.0
+text = "Pos X:
+Pos Y:
+Scale:
+Dist.:"
+
+[node name="Label2" type="Label" parent="pause/touchconfig"]
+offset_left = 760.0
+offset_top = 104.0
+offset_right = 806.0
+offset_bottom = 205.0
+text = "Pos X:
+Pos Y:
+Scale:
+Dist.:"
+
+[node name="Button" type="Button" parent="pause/touchconfig"]
+offset_left = 96.0
+offset_top = 104.0
+offset_right = 128.0
+offset_bottom = 136.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button2" type="Button" parent="pause/touchconfig"]
+offset_left = 72.0
+offset_top = 104.0
+offset_right = 104.0
+offset_bottom = 136.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button3" type="Button" parent="pause/touchconfig"]
+offset_left = 96.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 160.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button4" type="Button" parent="pause/touchconfig"]
+offset_left = 72.0
+offset_top = 128.0
+offset_right = 104.0
+offset_bottom = 160.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button5" type="Button" parent="pause/touchconfig"]
+offset_left = 96.0
+offset_top = 152.0
+offset_right = 128.0
+offset_bottom = 184.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button6" type="Button" parent="pause/touchconfig"]
+offset_left = 72.0
+offset_top = 152.0
+offset_right = 104.0
+offset_bottom = 184.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button7" type="Button" parent="pause/touchconfig"]
+offset_left = 96.0
+offset_top = 176.0
+offset_right = 128.0
+offset_bottom = 208.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button8" type="Button" parent="pause/touchconfig"]
+offset_left = 72.0
+offset_top = 176.0
+offset_right = 104.0
+offset_bottom = 208.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button9" type="Button" parent="pause/touchconfig"]
+offset_left = 840.0
+offset_top = 112.0
+offset_right = 872.0
+offset_bottom = 144.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button10" type="Button" parent="pause/touchconfig"]
+offset_left = 816.0
+offset_top = 112.0
+offset_right = 848.0
+offset_bottom = 144.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button11" type="Button" parent="pause/touchconfig"]
+offset_left = 840.0
+offset_top = 136.0
+offset_right = 872.0
+offset_bottom = 168.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button12" type="Button" parent="pause/touchconfig"]
+offset_left = 816.0
+offset_top = 136.0
+offset_right = 848.0
+offset_bottom = 168.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button13" type="Button" parent="pause/touchconfig"]
+offset_left = 840.0
+offset_top = 160.0
+offset_right = 872.0
+offset_bottom = 192.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button14" type="Button" parent="pause/touchconfig"]
+offset_left = 816.0
+offset_top = 160.0
+offset_right = 848.0
+offset_bottom = 192.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Button15" type="Button" parent="pause/touchconfig"]
+offset_left = 840.0
+offset_top = 184.0
+offset_right = 872.0
+offset_bottom = 216.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "+"
+
+[node name="Button16" type="Button" parent="pause/touchconfig"]
+offset_left = 816.0
+offset_top = 184.0
+offset_right = 848.0
+offset_bottom = 216.0
+scale = Vector2(0.7, 0.7)
+action_mode = 0
+text = "-"
+
+[node name="Label3" type="Label" parent="pause/touchconfig"]
+offset_left = 40.0
+offset_top = 208.0
+offset_right = 80.0
+offset_bottom = 231.0
+
+[node name="Label4" type="Label" parent="pause/touchconfig"]
+offset_left = 40.0
+offset_top = 248.0
+offset_right = 80.0
+offset_bottom = 271.0
+
+[node name="subs_jp" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 448.0
+offset_right = 328.0
+offset_bottom = 471.0
+theme_override_constants/outline_size = 1
+
+[node name="subs_ro" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 472.0
+offset_right = 328.0
+offset_bottom = 495.0
+theme_override_constants/outline_size = 1
+
+[node name="subs_en" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 496.0
+offset_right = 328.0
+offset_bottom = 519.0
+theme_override_constants/outline_size = 1
+
+[node name="subs_all" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 472.0
+offset_right = 328.0
+offset_bottom = 495.0
+theme_override_constants/outline_size = 1
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Settings" parent="." instance=ExtResource("7_cdvet")]
+visible = false
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 768.0
+offset_bottom = 448.0
+
+[node name="resync" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false
+zoom = Vector2(0.5, 0.5)
+
+[node name="syncer" type="Timer" parent="."]
+
+[connection signal="timeout" from="sync" to="." method="_on_sync_timeout"]
+[connection signal="pressed" from="pause/Button" to="pause" method="_on_Button_pressed"]
+[connection signal="pressed" from="pause/Button2" to="pause" method="_on_Button2_pressed"]
+[connection signal="pressed" from="pause/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="pause/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="pause/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="timeout" from="resync" to="." method="_on_resync_timeout"]
+[connection signal="timeout" from="syncer" to="." method="_on_syncer_timeout"]

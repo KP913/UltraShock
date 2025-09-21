@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30mm"
+   height="30mm"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="fcircle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="4.8175713"
+     inkscape:cx="56.667558"
+     inkscape:cy="55.733477"
+     inkscape:window-width="1876"
+     inkscape:window-height="992"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6"
+       is_visible="true"
+       lpeversion="1" />
+    <linearGradient
+       id="linearGradient3"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#b6303f;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#dc694e;stop-opacity:1;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="0,15"
+       end_point="30,15"
+       center_point="15,15"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1.2"
+       lpesatellites=""
+       mode="horizontal"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false"
+       link_styles="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3"
+       id="linearGradient4"
+       x1="2.8302338"
+       y1="24.12191"
+       x2="27.114454"
+       y2="5.8224378"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1"
+       style="display:inline;fill:url(#linearGradient4);stroke:#000000;stroke-width:1.465"
+       d="M 14.869893 0.051159668 C 10.980712 0.077901458 7.125887 1.6980036 4.385262 4.457609 C 3.704135 5.1434534 3.0936502 5.8975975 2.561084 6.7034668 C 1.5630884 7.2218742 0.6702478 7.6412938 0.14314372 7.8108927 C -1.2566033 8.3529755 -2.0020882 8.2603745 -2.9202352 8.0914958 C -3.899525 7.8640119 -5.7040594 6.4485727 -7.0481486 6.0228882 C -7.4475398 5.8929342 -8.3429543 5.7772688 -9.0423421 5.972762 C -10.480222 6.374679 -10.379436 8.759624 -10.053133 10.009208 C -9.5982107 11.56555 -7.6524128 12.820915 -5.8900798 13.70459 C -3.9612084 14.550334 -1.9669326 14.869699 0.049609375 15.014071 C 0.050074023 15.014079 0.050695069 15.014062 0.051159668 15.014071 C 0.062638288 18.914826 1.676419 22.787421 4.4395223 25.541077 C 7.2124881 28.30456 11.108529 29.906707 15.023372 29.893266 C 18.912593 29.879916 22.772886 28.273108 25.52299 25.52299 C 28.273093 22.772872 29.879866 18.912593 29.893266 15.023372 C 29.906812 11.091378 28.290001 7.1789554 25.504903 4.4033488 C 22.719806 1.6277422 18.801818 0.024123978 14.869893 0.051159668 z M 14.972213 7.4346883 C 16.941686 7.4480213 18.903096 8.2334169 20.309871 9.6118164 C 21.716647 10.990216 22.544121 12.951835 22.509737 14.921053 C 22.475797 16.865113 21.603553 18.773279 20.182231 20.100065 C 18.760908 21.426851 16.814207 22.163455 14.869893 22.150586 C 12.951166 22.137886 11.03909 21.395879 9.6407552 20.081978 C 8.2424202 18.768077 7.3798637 16.890394 7.332369 14.972213 C 7.315284 14.282198 7.404374 13.592648 7.5871338 12.927893 C 7.9327412 11.670811 8.6138704 10.503008 9.5492879 9.5926961 C 10.135324 9.0223887 10.816409 8.5549161 11.553817 8.2026001 C 12.615866 7.6951778 13.7945 7.4267156 14.972213 7.4346883 z "
+       inkscape:export-filename="fcircle.png"
+       inkscape:export-xdpi="207.69446"
+       inkscape:export-ydpi="207.69446" />
+  </g>
+</svg>

@@ -1,0 +1,240 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcu8vp0evit4v"]
+
+[ext_resource type="Script" uid="uid://dc1ax6mt0257t" path="res://menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c23tp6sfxcl46" path="res://gfx/svg/settings.png" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://bvml3dyfbej6f" path="res://gfx/svg/touch.png" id="2_ouk20"]
+[ext_resource type="Script" uid="uid://cb68pd44t3iec" path="res://pause_button.gd" id="2_ytr4m"]
+[ext_resource type="PackedScene" uid="uid://baowfc76krwer" path="res://settings.tscn" id="4_4hy44"]
+
+[sub_resource type="Gradient" id="Gradient_mae5d"]
+colors = PackedColorArray(0.2, 0.2, 0.2, 1, 0.27, 0.27, 0.27, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4hy44"]
+gradient = SubResource("Gradient_mae5d")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ytr4m"]
+texture = SubResource("GradientTexture2D_4hy44")
+
+[sub_resource type="Shortcut" id="2"]
+
+[sub_resource type="Shortcut" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6tcp"]
+size = Vector2(16, 16)
+
+[node name="Menu" type="Node2D" groups=["menu"]]
+script = ExtResource("1")
+
+[node name="SongsCompleted" type="VBoxContainer" parent="."]
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 304.0
+offset_bottom = 1470.0
+scale = Vector2(1.3, 1.3)
+
+[node name="SongsUncompleted" type="VBoxContainer" parent="."]
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 304.0
+offset_bottom = 1470.0
+scale = Vector2(1.3, 1.3)
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 960.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ytr4m")
+
+[node name="Button8" type="Button" parent="."]
+process_mode = 3
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+script = ExtResource("2_ytr4m")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button8"]
+position = Vector2(24, 24)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_mae5d")
+
+[node name="Sort" type="OptionButton" parent="."]
+offset_left = 832.0
+offset_top = 16.0
+offset_right = 944.0
+offset_bottom = 48.0
+
+[node name="Label2" type="Label" parent="Sort"]
+layout_mode = 0
+offset_left = -64.0
+offset_right = -5.0
+offset_bottom = 32.0
+text = "Sort by:"
+vertical_alignment = 1
+
+[node name="Gamemode" type="OptionButton" parent="."]
+offset_left = 616.0
+offset_top = 16.0
+offset_right = 728.0
+offset_bottom = 47.0
+item_count = 6
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Cinema"
+popup/item_1/id = 5
+popup/item_2/text = "Funny 1"
+popup/item_2/id = 1
+popup/item_3/text = "Funny 2"
+popup/item_3/id = 2
+popup/item_4/text = "Funny 3"
+popup/item_4/id = 3
+popup/item_5/text = "Funny 4"
+popup/item_5/id = 4
+
+[node name="new_level" type="Button" parent="."]
+offset_left = 824.0
+offset_top = 72.0
+offset_right = 907.0
+offset_bottom = 103.0
+scale = Vector2(1.5, 1.5)
+text = "New level"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 24.0
+offset_top = 432.0
+offset_right = 64.0
+offset_bottom = 446.0
+scale = Vector2(2, 2)
+
+[node name="debug" type="Label" parent="."]
+visible = false
+offset_left = 760.0
+offset_top = 48.0
+offset_right = 800.0
+offset_bottom = 71.0
+
+[node name="debug2" type="Label" parent="."]
+visible = false
+offset_left = 760.0
+offset_top = 80.0
+offset_right = 800.0
+offset_bottom = 103.0
+
+[node name="select" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="play" type="Button" parent="select"]
+offset_left = 348.0
+offset_top = 180.0
+offset_right = 389.0
+offset_bottom = 212.0
+shortcut = SubResource("2")
+text = "Play"
+
+[node name="edit" type="Button" parent="select"]
+offset_left = 416.0
+offset_top = 180.0
+offset_right = 456.0
+offset_bottom = 212.0
+shortcut = SubResource("4")
+text = "Edit"
+
+[node name="convert" type="Button" parent="select"]
+visible = false
+offset_left = 412.0
+offset_top = 200.0
+offset_right = 542.0
+offset_bottom = 232.0
+scale = Vector2(0.5, 0.5)
+shortcut = SubResource("4")
+text = "Convert Folders"
+
+[node name="Label" type="Label" parent="select"]
+offset_left = 308.0
+offset_top = 92.0
+offset_right = 476.0
+offset_bottom = 160.0
+autowrap_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="."]
+offset_left = 472.0
+offset_top = 16.0
+offset_right = 585.0
+offset_bottom = 47.0
+button_pressed = true
+text = "Completed"
+
+[node name="no_songs" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="no_songs"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 184.0
+offset_right = 354.0
+offset_bottom = 259.0
+scale = Vector2(2, 2)
+text = "No levels found!
+
+Create a new level or add some at "
+autowrap_mode = 3
+
+[node name="touch" type="Node2D" parent="."]
+visible = false
+texture_filter = 1
+
+[node name="TouchScreenButton12" type="TouchScreenButton" parent="touch"]
+position = Vector2(656, 424)
+scale = Vector2(3.2, 3.2)
+shape = SubResource("RectangleShape2D_h6tcp")
+action = "m_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="touch/TouchScreenButton12"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_ouk20")
+hframes = 4
+vframes = 8
+frame = 2
+
+[node name="TouchScreenButton13" type="TouchScreenButton" parent="touch"]
+position = Vector2(656, 488)
+scale = Vector2(3.2, 3.2)
+shape = SubResource("RectangleShape2D_h6tcp")
+action = "m_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="touch/TouchScreenButton13"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_ouk20")
+hframes = 4
+vframes = 8
+frame = 3
+
+[node name="Settings" parent="." instance=ExtResource("4_4hy44")]
+visible = false
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 768.0
+offset_bottom = 464.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(256, 296)
+enabled = false
+zoom = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="Button8" to="Button8" method="_on_pressed"]
+[connection signal="item_selected" from="Sort" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="new_level" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="select/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="select/edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="select/convert" to="." method="_on_convert_pressed"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]

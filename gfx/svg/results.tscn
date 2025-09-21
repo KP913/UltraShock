@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="20mm"
+   height="20mm"
+   viewBox="0 0 20 20"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="results.tscn"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#8e8e8e"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="5.8938833"
+     inkscape:cx="35.714993"
+     inkscape:cy="43.010692"
+     inkscape:window-width="1876"
+     inkscape:window-height="992"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:1.465;stroke-opacity:1;fill-opacity:0"
+       id="path1"
+       inkscape:flatsided="false"
+       sodipodi:sides="5"
+       sodipodi:cx="9.9989986"
+       sodipodi:cy="9.9989986"
+       sodipodi:r1="9.9380987"
+       sodipodi:r2="4.9690494"
+       sodipodi:arg1="-1.5707963"
+       sodipodi:arg2="-0.9424778"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 9.9989989,0.06089973 12.919733,5.9789532 19.450692,6.9279574 14.724846,11.534519 15.840466,18.03909 9.9989987,14.968048 4.1575305,18.039089 5.2731518,11.534519 0.547305,6.9279569 7.0782646,5.9789532 Z"
+       inkscape:transform-center-y="-0.94900398"
+       inkscape:export-filename="star_half.png"
+       inkscape:export-xdpi="147.43591"
+       inkscape:export-ydpi="147.43591" />
+    <path
+       d="M 9.9658,14.985649 V 0.12815755 L 7.0781209,5.9789632 0.54725342,6.9277425 5.2730632,11.534696 4.157369,18.039209 Z"
+       style="fill:#ffffff;stroke-width:1.465"
+       id="path4" />
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cdtt0aip6v3ua"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="big" type="Line2D" parent="."]
+position = Vector2(-64, 32)
+points = PackedVector2Array(64, 40, 64, 96)
+
+[node name="small" type="Line2D" parent="."]
+position = Vector2(0, 32)
+points = PackedVector2Array(64, 40, 64, 64)

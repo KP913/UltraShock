@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30mm"
+   height="30mm"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="fdtriangle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="4.0000001"
+     inkscape:cx="83.374998"
+     inkscape:cy="71.874998"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#55ab36;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#7fc543;stop-opacity:1;"
+         offset="1"
+         id="stop3" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="0,15"
+       end_point="30,15"
+       center_point="15,15"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1.2"
+       lpesatellites=""
+       mode="horizontal"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false"
+       link_styles="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="7.161274"
+       y1="28.623875"
+       x2="22.855274"
+       y2="1.4410683"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1"
+       style="fill:url(#linearGradient3);stroke:#000000;stroke-width:1.465"
+       d="m 12.87415,0.07027995 c -1.127929,0 -1.476379,0.06225545 -2.443779,1.09915775 L 5.4730509,6.1267578 c -3.602e-4,2.308e-4 -6.732e-4,2.86e-4 -0.00103,5.168e-4 C 4.1631259,7.2340738 2.779982,8.0590384 0.12143962,8.3281738 -3.8583661,8.7189101 -4.2878089,7.2076525 -7.0703695,6.0440755 c -0.3993912,-0.129954 -1.294289,-0.2456193 -1.9936767,-0.050126 -1.4378798,0.401917 -1.3370938,2.7868615 -1.0107908,4.0364466 0.4549218,1.556341 2.4002036,2.811706 4.1625364,3.695381 1.9288714,0.845744 3.9236641,1.165109 5.94020587,1.309481 0.0062914,1.16e-4 0.01283167,4.08e-4 0.01912028,5.17e-4 v 1.996777 c 0,0.930065 0.4660716,1.454692 1.37562665,1.454692 l 4.5640625,0.04082 c 0.523769,0.02902 0.8855053,0.179709 1.1218953,0.424264 0.25167,0.260363 0.3615342,0.626835 0.3746542,1.066084 l 0.023771,8.489405 c -0.03431,1.119414 0.7783766,1.476048 1.9874756,1.476395 l 11.0137981,0.0093 c 1.566121,0.03415 2.047657,-0.558024 1.996777,-1.456759 l 0.03307,-8.518343 c -0.01865,-0.900918 0.504753,-1.555865 1.444356,-1.543575 h 4.460193 c 0.975095,0.01207 1.548362,-0.402348 1.526522,-1.449524 v -3.975984 c -0.04089,-0.983635 -0.08968,-1.635829 -1.215946,-2.701127 L 19.620508,1.2154297 C 18.780582,0.21442527 18.176265,0.06889395 17.18138,0.07027995 Z"
+       sodipodi:nodetypes="scccccsccccsccscccccccccccccs"
+       inkscape:export-filename="fdtriangle.png"
+       inkscape:export-xdpi="207.15034"
+       inkscape:export-ydpi="207.15034" />
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhk7nlka4k43k"]
+
+[ext_resource type="Script" uid="uid://y0ihknv7iok3" path="res://target.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dggmeteo5ppum" path="res://gfx/note_sheet_new.png" id="3_5ebp1"]
+
+[node name="target" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+default_color = Color(0.51, 0.599833, 1, 1)
+
+[node name="note" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_5ebp1")
+hframes = 6
+vframes = 4
+
+[node name="note2" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_5ebp1")
+hframes = 6
+vframes = 4
+region_rect = Rect2(64, 0, 64, 64)
+region_filter_clip_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
