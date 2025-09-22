@@ -80,9 +80,13 @@ var speed_changes = []
 var hold1_sfx : AudioStreamPlayer
 var hold2_sfx : AudioStreamPlayer
 
+var subs_all = false
+
 var move_tween : Tween
 
 var key_locks = [false,false,false,false,false,false,false,false]
+
+var controller = false
 
 var rainbow_shader = preload("res://rainbow.gdshader")
 
@@ -100,6 +104,11 @@ func _ready():
 	if info.has("speed"): speed_mult = float(info.speed)
 	song_name = info.name
 	$Label6.text = song_name
+	
+	var label_length = $Label6.get_character_bounds($Label6.text.length()-1).end.x
+	if label_length > $Label6.size.x:
+		$Label6.scale /= label_length / $Label6.size.x
+	
 	
 	for i in info.level:
 		var dict = {}
@@ -173,7 +182,7 @@ func _ready():
 	
 	if OS.get_name() == "Android":
 		$touch.show()
-	$Settings.update_from_gl()
+	update_settings()
 	setup_touch()
 	
 	for i in ["subs_jp","subs_ro","subs_en"]:
@@ -190,15 +199,16 @@ func _ready():
 		needs_sync = true
 		sync_amount = -((level[-1].time/64-4/speed_mult) + s2b(wait_time) + s2b(GL.settings.sync))
 	
-	$syncer.wait_time = b2s(1)
-	$syncer.start(b2s(1))
 	
-	var tween = get_tree().create_tween()
+	#$syncer.wait_time = b2s(1)
+	#$syncer.start(b2s(1))
+	#
+	#var tween = get_tree().create_tween()
 	#tween.tween_property($notes,"position:y",-128,b2s(1))
-	move_tween = tween
+	#move_tween = tween
 
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT && OS.get_name() == "Android" && !get_tree().paused:
+	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT && !get_tree().paused && OS.get_name() == "Android":
 		$pause._on_Button_pressed()
 
 func setup_touch():
@@ -219,7 +229,7 @@ func _process(delta):
 	#print(bpm)
 	$Label8.visible = GL.settings.fps
 	$Label8.text = "FPS: "+str(Engine.get_frames_per_second())
-	if !$subs_all.visible:
+	if !subs_all:
 		$subs_en.visible = GL.settings.subs_en
 		$subs_ro.visible = GL.settings.subs_ro
 		$subs_jp.visible = GL.settings.subs_jp
@@ -289,24 +299,26 @@ func _process(delta):
 			
 			if ($subs_en.text == $subs_ro.text && $subs_en.text == $subs_jp.text) or ($subs_en.text == "" && $subs_jp.text == $subs_ro.text):
 				$subs_all.text = $subs_ro.text
+				subs_all = true
 				$subs_all.show()
 				$subs_en.hide()
 				$subs_ro.hide()
 				$subs_jp.hide()
 			else:
+				subs_all = false
 				$subs_all.hide()
 				$subs_en.show()
 				$subs_ro.show()
 				$subs_jp.show()
 	
-	if speed_changes != []:
-		if beat >= speed_changes[0][1]:
-			speed_mult = speed_changes[0][0]
-			speed_changes.remove_at(0)
-			_on_syncer_timeout()
-			$syncer.stop()
-			$syncer.wait_time = b2s(1)
-			$syncer.start(b2s(1))
+	#if speed_changes != []:
+		#if beat >= speed_changes[0][1]:
+			#speed_mult = speed_changes[0][0]
+			#speed_changes.remove_at(0)
+			#_on_syncer_timeout()
+			#$syncer.stop()
+			#$syncer.wait_time = b2s(1)
+			#$syncer.start(b2s(1))
 	
 	#if bpm_list != []: #URGENTE
 		#if bpm_list[0][1] <= beat:
@@ -335,18 +347,23 @@ func _process(delta):
 			bpm = bpm_list[0][0]
 			GL.bpm = bpm
 			bpm_list.remove_at(0)
-			_on_syncer_timeout()
-			$syncer.stop()
-			$syncer.wait_time = b2s(1)
-			$syncer.start(b2s(1))
+			#_on_syncer_timeout()
+			#$syncer.stop()
+			#$syncer.wait_time = b2s(1)
+			#$syncer.start(b2s(1))
 
 func _input(event):
 	if event.is_action_pressed("circle") or event.is_action_pressed("circle2") or event.is_action_pressed("cross") or event.is_action_pressed("cross2") or event.is_action_pressed("square") or event.is_action_pressed("square2") or event.is_action_pressed("triangle") or event.is_action_pressed("triangle2"):
 		hit_sound("hit")
+	if event is InputEventJoypadButton:
+		controller = true
+	if event is InputEventScreenTouch or event is InputEventKey or event is InputEventMouseButton:
+		controller = false
 
 func hit_sound(sound,volume_add=0):
 	var a = AudioStreamPlayer.new()
-	a.stream = load("res://sfx/"+sound+".wav")
+	if sound == "chance": a.stream = load("res://sfx/"+sound+".ogg")
+	else: a.stream = load("res://sfx/"+sound+".wav")
 	a.volume_db = sfx_volume+volume_add
 	if sfx_volume == -50: a.volume_db = -99999999999999
 	$sfx.add_child(a)
@@ -429,11 +446,11 @@ func spawn_special(type,time):
 			$Label4.show()
 			#$Label5.show()
 
-func note_hit(note, text, hold = false, chance_note = false, holded = false):
+func note_hit(note, text:String, hitted, miss, hold = false, chance_note = false, holded = false):
 	#print(note.final)
 	#print(note,hold,holded)
 	if chance_note && !holded:
-		if chance_have >= chance_need and (text == "COOL" or text == "GOOD"):
+		if chance_have >= chance_need and hitted:
 			extra_points += 5
 			GL.chance[0] += 1
 		GL.chance[1] += 1
@@ -447,17 +464,17 @@ func note_hit(note, text, hold = false, chance_note = false, holded = false):
 		else: note_array1.remove_at(0)
 	#print(note.final)
 	
-	if text != "MISS":
+	if !miss:
 		if note.double or note.hold:
 			for i in $sfx.get_children():
 				if i.get_playback_position() < 0.2 && i.stream == preload("res://sfx/hit.wav"):
 					i.queue_free()
-		if chance_note && !holded && (text == "GOOD" or text == "COOL"):
+		if chance_note && !holded && hitted:
 			hit_sound("chance",7)
-			Input.start_joy_vibration(0,0.8,0.8,0.6)
+			if controller: Input.start_joy_vibration(0,0.8,0.8,0.6)
 		elif note.final && !hold:
 			hit_sound("final",-2)
-			Input.start_joy_vibration(0,0.6,0.5,0.5)
+			if controller: Input.start_joy_vibration(0,0.6,0.5,0.5)
 		elif hold:
 			hit_sound("hold_start")
 			var a = AudioStreamPlayer.new()
@@ -493,10 +510,10 @@ func note_hit(note, text, hold = false, chance_note = false, holded = false):
 	#print(note.final)
 	var arr = ["COOL","GOOD","SAFE","BAD","MISS"]
 	GL.note_scores[arr.find(text)] += 1
-	if text == "MISS" && hold == false && holded == false && note.hold == 1: GL.note_scores[4] += 1
+	if miss && hold == false && holded == false && note.hold == 1: GL.note_scores[4] += 1
 	#GL.total_notes += 1
 	
-	if text == "COOL" or text == "GOOD":
+	if hitted:
 		
 		#print(note.final)
 		notes_hit += 1
@@ -620,6 +637,36 @@ func load_song():
 	$Control/VideoStreamPlayer.stream = video
 
 
+func update_settings():
+	$AudioStreamPlayer.volume_db = (GL.settings.song + GL.settings.master)/2 - 50
+	sfx_volume = (GL.settings.sfx + GL.settings.master)/2 - 50
+	if GL.settings.master == 0 or GL.settings.song == 0: $AudioStreamPlayer.volume_db = -99999999999
+	$Control/Sprite2D.modulate.a = 1-GL.settings.brightness/100.0
+	
+	var c = int($subs_en.visible) + 2*int($subs_ro.visible) + 4*int($subs_jp.visible)
+	match c:
+		1: $subs_en.position.y = 24
+		2: $subs_ro.position.y = 24
+		4: $subs_jp.position.y = 24
+		3:
+			$subs_ro.position.y = 8
+			$subs_en.position.y = 40
+		5:
+			$subs_jp.position.y = 8
+			$subs_en.position.y = 40
+		6:
+			$subs_jp.position.y = 8
+			$subs_ro.position.y = 40
+		7:
+			$subs_jp.position.y = 0
+			$subs_ro.position.y = 24
+			$subs_en.position.y = 48
+	
+	Engine.time_scale = GL.settings.pitch
+	#$Control/VideoStreamPlayer.speed_scale = GL.settings.pitch
+	#print("SPEED: ",$Control/VideoStreamPlayer.speed_scale)
+	$AudioStreamPlayer.pitch_scale = GL.settings.pitch
+
 
 func s2bpm(s):
 	return 60/float(s)
@@ -713,9 +760,9 @@ func _on_sync_timeout():
 		$Control/VideoStreamPlayer.scale = Vector2(960,540) / $Control/VideoStreamPlayer.get_video_texture().get_size()
 
 
-func _on_syncer_timeout():
+#func _on_syncer_timeout():
 	#print($notes.position.y)
-	move_tween.stop()
+	#move_tween.stop()
 	#ISTO É ESSENCIAL vvvv
 	#var tween = get_tree().create_tween()
 	#tween.tween_property($notes,"position:y",$notes.position.y+128*speed_mult,b2s(1))

@@ -1,6 +1,7 @@
 extends Panel
 
 var song = ""
+
 var song_name = ""
 var score = 0
 var length = 0
@@ -105,7 +106,7 @@ func _input(event: InputEvent) -> void:
 		gonna_touch = true
 	if main.dragging: gonna_touch = false
 		
-	if !main.dragging && !main.settings_open && (get_global_rect().has_point(get_global_mouse_position()) && event is InputEventMouseButton && get_global_mouse_position().y >= 64) or (event is InputEventScreenTouch && get_global_rect().has_point(event.position) && event.position >= 64):
+	if !main.dragging && !main.settings_open && (get_global_rect().has_point(get_global_mouse_position()) && event is InputEventMouseButton && get_global_mouse_position().y >= 64) or (event is InputEventScreenTouch && get_global_rect().has_point(event.position) && event.position.y >= 64):
 		if !selected:
 			if (event is InputEventMouseButton && event.is_action_released("left_click")) or (event is InputEventScreenTouch && !event.pressed && gonna_touch):
 				print($"../..".songs_showing)

@@ -246,10 +246,13 @@ func hit(miss = false, start_hold = false, holded = false):
 		#score = "BAD"
 	#else:
 		#score = "MISS"
+	var hitted = false
 	if offset <= 0.05:
 		score = "COOL"
+		hitted = true
 	elif offset <= 0.08:
 		score = "GOOD"
+		hitted = true
 	elif offset <= 0.11:
 		score = "SAFE"
 	elif offset <= 0.14 :
@@ -259,8 +262,10 @@ func hit(miss = false, start_hold = false, holded = false):
 	
 	if miss:
 		score = "MISS"
+	#score = str(snappedf(start_time-s2b(timing),0.01))
+	#if !hold: print(start_time-s2b(timing),",",position.y-160,",",(start_time-s2b(timing))/(position.y-160))
 	#print("asd",",",time,",",score,",",hold,",",holded)
-	main.note_hit(self, score, start_hold, chance, holded)
+	main.note_hit(self, score, hitted, miss, start_hold, chance, holded)
 	if !start_hold:
 		queue_free()
 

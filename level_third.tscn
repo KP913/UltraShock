@@ -32,7 +32,7 @@ texture = SubResource("GradientTexture2D_km5ld")
 [sub_resource type="CircleShape2D" id="CircleShape2D_pna0u"]
 radius = 13.0
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" groups=["level"]]
 script = ExtResource("1_poi1f")
 
 [node name="Control" type="Control" parent="."]

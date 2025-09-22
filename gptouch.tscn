@@ -1,0 +1,383 @@
+[gd_scene load_steps=5 format=3 uid="uid://6m0j8kl54cus"]
+
+[ext_resource type="Script" uid="uid://dhnqq5lw244dy" path="res://gptouch.gd" id="1_ndcay"]
+[ext_resource type="Texture2D" uid="uid://do3xblw82jxwf" path="res://gfx/touch.png" id="1_tp5p0"]
+[ext_resource type="Texture2D" uid="uid://bvml3dyfbej6f" path="res://gfx/svg/touch.png" id="2_38dhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pna0u"]
+radius = 13.0
+
+[node name="gptouch" type="Node2D"]
+process_mode = 3
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_ndcay")
+
+[node name="left" type="Node2D" parent="."]
+position = Vector2(150, 500)
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="left"]
+position = Vector2(-5.72205e-06, -80)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "triangle"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton5"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="up" type="TouchScreenButton" parent="left/TouchScreenButton5"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "triangle_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton5/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="left/TouchScreenButton5"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "triangle_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton5/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="TouchScreenButton6" type="TouchScreenButton" parent="left"]
+position = Vector2(-80, 0)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "square"
+visibility_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton6"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 6
+
+[node name="up" type="TouchScreenButton" parent="left/TouchScreenButton6"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "square_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton6/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="left/TouchScreenButton6"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "square_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton6/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="TouchScreenButton7" type="TouchScreenButton" parent="left"]
+position = Vector2(80, 0)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "circle"
+visibility_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton7"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 5
+
+[node name="up" type="TouchScreenButton" parent="left/TouchScreenButton7"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "circle_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton7/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="left/TouchScreenButton7"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "circle_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton7/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="TouchScreenButton8" type="TouchScreenButton" parent="left"]
+position = Vector2(-5.72205e-06, 80)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "cross"
+visibility_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton8"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 4
+
+[node name="up" type="TouchScreenButton" parent="left/TouchScreenButton8"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "cross_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton8/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="left/TouchScreenButton8"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "cross_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="left/TouchScreenButton8/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="right" type="Node2D" parent="."]
+position = Vector2(1050, 500)
+
+[node name="TouchScreenButton9" type="TouchScreenButton" parent="right"]
+position = Vector2(-3.0756e-05, -80)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "triangle2"
+visibility_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton9"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="up" type="TouchScreenButton" parent="right/TouchScreenButton9"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "triangle2_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton9/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="right/TouchScreenButton9"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "triangle2_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton9/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="TouchScreenButton10" type="TouchScreenButton" parent="right"]
+position = Vector2(-80, 2.28882e-05)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "square2"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton10"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 6
+
+[node name="up" type="TouchScreenButton" parent="right/TouchScreenButton10"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "square2_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton10/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="right/TouchScreenButton10"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "square2_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton10/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="TouchScreenButton11" type="TouchScreenButton" parent="right"]
+position = Vector2(80, 2.28882e-05)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "circle2"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton11"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 5
+
+[node name="up" type="TouchScreenButton" parent="right/TouchScreenButton11"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "circle2_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton11/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="right/TouchScreenButton11"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "circle2_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton11/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="TouchScreenButton12" type="TouchScreenButton" parent="right"]
+position = Vector2(-3.0756e-05, 80)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "cross2"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton12"]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_38dhb")
+hframes = 4
+vframes = 8
+frame = 4
+
+[node name="up" type="TouchScreenButton" parent="right/TouchScreenButton12"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.43051e-06, -28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "cross2_up"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton12/up"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="down" type="TouchScreenButton" parent="right/TouchScreenButton12"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_pna0u")
+passby_press = true
+action = "cross2_down"
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="right/TouchScreenButton12/down"]
+texture = ExtResource("1_tp5p0")
+hframes = 4
+vframes = 8
+frame = 7

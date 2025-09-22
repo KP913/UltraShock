@@ -62,7 +62,7 @@ func _ready():
 		if folder == "": break
 		#var filepath = GL.systemdir+file
 		var path = GL.systemdir+"songs/"+folder+"/"
-		if !FileAccess.file_exists(path+"level.lvl"): continue
+		if !FileAccess.file_exists(path+"level.lvl") or folder.begins_with("."): continue
 		var song = folder
 		
 		load_level(song,id)
