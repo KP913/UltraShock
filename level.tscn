@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://f5lf2luuy2w5"]
 
-[ext_resource type="Script" uid="uid://di52t7wkctq1v" path="res://level.gd" id="1_n6hdu"]
-[ext_resource type="Texture2D" uid="uid://bu2m1df6aoe6m" path="res://icon.png" id="2"]
+[ext_resource type="Script" uid="uid://eeqdlu1p3gmu" path="res://level.gd" id="1_n6hdu"]
+[ext_resource type="Texture2D" uid="uid://ebgevaso874r" path="res://icon.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bjht34ue81575" path="res://gfx/receiver.png" id="2_88mkt"]
-[ext_resource type="Script" uid="uid://bel1k7nq45m47" path="res://pause.gd" id="3"]
+[ext_resource type="Script" uid="uid://76qdqf1vvdwc" path="res://pause.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bvml3dyfbej6f" path="res://gfx/svg/touch.png" id="4_n6hdu"]
-[ext_resource type="PackedScene" uid="uid://6m0j8kl54cus" path="res://gptouch.tscn" id="5_2m2ec"]
+[ext_resource type="PackedScene" path="res://gptouch.tscn" id="5_2m2ec"]
 [ext_resource type="PackedScene" uid="uid://baowfc76krwer" path="res://settings.tscn" id="6_j6xq1"]
 
 [sub_resource type="Gradient" id="Gradient_km5ld"]

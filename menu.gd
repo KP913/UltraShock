@@ -278,6 +278,7 @@ func setup_touch():
 		i.connect("pressed",GL.vibrate)
 
 func _process(delta):
+	settings_open = false
 	#print($VBoxContainer.get_child(0).song,",",$VBoxContainer.get_child(0).song_name)
 	if songs != []:
 		$select/Label.text = songs_showing[selected].song_name
