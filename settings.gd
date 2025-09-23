@@ -41,7 +41,7 @@ func _on_button_pressed():
 	if get_tree().current_scene.is_in_group("level"): $"../pause".show()
 	else:
 		get_tree().paused = false
-		get_tree().current_scene.settings_open = false
+		#get_tree().current_scene.settings_open = false
 
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("pause"):
