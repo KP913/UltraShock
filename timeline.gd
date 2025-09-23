@@ -421,6 +421,7 @@ func _input(event):
 				a.scale = Vector2(0.125,0.125)
 				a.centered = false
 				a.texture = preload("res://gfx/receiver.png")
+				a.name = "checkpoint"
 				a.set_meta("time",playing_pos*64/9)
 				a.set_meta("ninths",playing_pos)
 				add_child(a)

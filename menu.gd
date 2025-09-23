@@ -171,7 +171,9 @@ func p3(lvl,a,path,id,combo):
 	if lvl.has("total"): a.total = lvl.total
 	if lvl.has("duration"): a.length = lvl.duration
 	if lvl.has("checkpoint") && a.length > 0:
-		a.checkpoint = snappedi(100 * lvl.checkpoint[1] / a.length,1)
+		var v = 1
+		if lvl.checkpoint.size() > 2: v = 3
+		a.checkpoint = snappedi(100 * lvl.checkpoint[v] / a.length,1)
 	#print(a.song,a.song_name)
 	a.id = id
 	a.name = str(id)

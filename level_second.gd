@@ -134,6 +134,7 @@ func _ready():
 		var dict = {}
 		dict.time = float(i.time)
 		dict.chance = bool(i.chance)
+		dict.ninths = float(i.ninths) if i.has("ninths") else float(i.time/64*9)
 		special.append(dict)
 	if info.has("bpm_list"):
 		bpm_list = info.bpm_list
@@ -143,7 +144,10 @@ func _ready():
 	if info.has("speed_changes"):
 		for i in info.speed_changes:
 			speed_changes.append([i.speed,i.time/64])
+	#print(speed_changes)
 	subtitles = info.subtitles
+	for i in subtitles:
+		if !i.has("ninths"): i.ninths = i.time/64*9
 	GL.bpm = bpm
 	GL.note_scores = [0,0,0,0,0]
 	GL.combo = 0

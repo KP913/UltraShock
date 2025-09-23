@@ -134,6 +134,7 @@ func _ready():
 		var dict = {}
 		dict.time = float(i.time)
 		dict.chance = bool(i.chance)
+		dict.ninths = float(i.ninths) if i.has("ninths") else float(i.time/64*9)
 		special.append(dict)
 	if info.has("bpm_list"):
 		bpm_list = info.bpm_list
@@ -145,6 +146,8 @@ func _ready():
 			speed_changes.append([i.speed,i.time/64])
 	#print(speed_changes)
 	subtitles = info.subtitles
+	for i in subtitles:
+		if !i.has("ninths"): i.ninths = i.time/64*9
 	GL.bpm = bpm
 	GL.note_scores = [0,0,0,0,0]
 	GL.combo = 0
@@ -271,12 +274,12 @@ func _process(delta):
 	
 	
 	if special != []:
-		if beat >= special[0].time/64:
-			spawn_special(2*int(special[0].chance),special[0].time)
+		if beat >= special[0].ninths/9:
+			spawn_special(2*int(special[0].chance),special[0].ninths)
 			special.remove_at(0)
 	
 	if subtitles != []:
-		if beat >= subtitles[0].time/64:
+		if beat >= subtitles[0].ninths/9:
 			if !subtitles[0].clear:
 				if !subs_jp.is_empty():
 					while subs_jp[0] == "": subs_jp.remove_at(0)
@@ -403,14 +406,14 @@ func spawn_note(info):
 	if note.second_voice: note_array2.append(note)
 	else: note_array1.append(note)
 
-func spawn_special(type,time):
+func spawn_special(type,ninths):
 	match type:
 		0: #tech
 			var c = 0
 			var a = level_raw.duplicate()
 			var start = false
 			for i in a:
-				if i.time >= time: start = true
+				if i.time/64*9 >= ninths: start = true
 				if start:
 					c += 1
 					if i.hold: c += 1
@@ -425,7 +428,7 @@ func spawn_special(type,time):
 			var a = level_raw.duplicate()
 			var start = false
 			for i in a:
-				if i.time >= time: start = true
+				if i.time/64*9 >= ninths: start = true
 				if start:
 					c += 1
 					if i.hold: c += 1
