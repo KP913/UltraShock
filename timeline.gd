@@ -396,10 +396,14 @@ func _input(event):
 				a.position = sub_pos
 				a.scale = Vector2(2,2)
 				a.centered = false
-				a.texture = preload("res://gfx/subtitle.png")
+				
 				a.set_meta("time",playing_pos*64/9)
-				if sub&1:a.set_meta("clear",false)
-				if sub&2:a.set_meta("clear",true)
+				if sub&1:
+					a.set_meta("clear",false)
+					a.texture = preload("res://gfx/subtitle.png")
+				if sub&2:
+					a.set_meta("clear",true)
+					a.texture = preload("res://gfx/subclear.png")
 				a.set_meta("ninths",playing_pos)
 				$subtitles.add_child(a)
 			else:
