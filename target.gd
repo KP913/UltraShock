@@ -56,7 +56,7 @@ func _ready():
 	#if OS.get_name() != "Android": flick = 0
 	
 	var tween = get_tree().create_tween()
-	print(position.y)
+	#print(position.y)
 	tween.tween_property(self,"position:y",160-512,b2s(8/main.speed_mult))
 	#tween.finished.connect(_on_Tween_tween_all_completed)
 	note_tween = tween
