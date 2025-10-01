@@ -264,6 +264,7 @@ func _input(event):
 				if has_node("notes/"+str(ninths+relative).replace(".","p")+("a" if !second_voice else "b")):
 					return
 				note.ninths += relative
+				note.time += 64*relative/9
 				if has_node("notes/"+str(ninths+relative).replace(".","p")+("a" if !second_voice else "b")):
 					get_node("notes/"+str(ninths+relative).replace(".","p")+("a" if !second_voice else "b")).queue_free()
 				update_note(get_key(),null,true)
