@@ -10,7 +10,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pna0u"]
 radius = 13.0
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" groups=["level"]]
 script = ExtResource("1_rte03")
 
 [node name="Control" type="Control" parent="."]
@@ -345,9 +345,9 @@ theme_override_constants/outline_size = 1
 
 [node name="subs_all" type="Label" parent="."]
 offset_left = 288.0
-offset_top = 472.0
+offset_top = 24.0
 offset_right = 328.0
-offset_bottom = 495.0
+offset_bottom = 47.0
 theme_override_constants/outline_size = 1
 
 [node name="Timer3" type="Timer" parent="."]

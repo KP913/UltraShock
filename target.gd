@@ -20,7 +20,10 @@ var stopped = false
 var fail_time_before = 0.09 #TAVA A 0.11
 var fail_time_after = 0.11 #TAVA A 0.11
 
-var flick_timing = 0.3
+var flick_timing = 110.3
+var flick_threshold = 5
+var flick_start_pos = 0.0
+var flick_frame = false
 
 #var button : int #cross circle square triangle
 #var dir = 0
@@ -94,15 +97,16 @@ func _ready():
 	starting_position_x = position.x
 
 func restart_tweens():
-	if note_tween != null:
+	if note_tween != null && note_tween.is_valid():
 		note_tween.kill()
 		var tween = get_tree().create_tween()
 		#print("a ",main.beat-start_beat)
 		tween.tween_property(self,"position:y",160-512,b2s((8-(main.beat-start_beat))/main.speed_mult))
 		note_tween = tween
-	if hold_tween != null:
+	if hold_tween != null && hold_tween.is_valid():
 		hold_tween.kill()
 		var tween2 = get_tree().create_tween()
+		
 		tween2.tween_property($note2,"position:y",0,b2s(duration-(main.beat-unhold_time)))
 		tween2.bind_node($note2)
 		hold_tween = tween2
@@ -114,12 +118,12 @@ func _physics_process(delta: float) -> void:
 
 var c = 0
 func _process(delta):
-	#c += 1
-	#if c == 15:
-		#restart_tweens()
-		#c = 0
+	c += 1
+	if c == 15:
+		restart_tweens()
+		c = 0
 	#print($note.position.y)
-	
+	if hold: print(note_tween != null && note_tween.is_valid(),",",hold_tween != null && hold_tween.is_valid())
 	#if stopped != -1: $note.position.y = stopped - get_parent().position.y
 	timing = b2s(start_time+4/main.speed_mult) - (main.beat - start_beat)*60/main.bpm
 	if timing == 0: hit()
@@ -186,6 +190,8 @@ func _process(delta):
 					#debug("fgh")
 					flicking = flick
 					flicking_second = Input.is_action_just_pressed(a[button]+"2")
+					flick_frame = true
+					debug("Started flicking!")
 					$Timer2.start()
 				else:
 					hit()
@@ -215,13 +221,6 @@ func _process(delta):
 			#$Timer2.start()
 			
 	
-	if flicking:
-		if !double:
-			if (flicking == 1 && ((!flicking_second && Input.is_action_just_pressed(a[button]+"_up")) or (flicking_second && Input.is_action_just_pressed(a[button]+"2_up")))) or (flicking == 2 && ((!flicking_second && Input.is_action_just_pressed(a[button]+"_down")) or (flicking_second && Input.is_action_just_pressed(a[button]+"2_down")))):
-				hit(false,false,hold)
-		else:
-			if (flicking == 1 && (Input.is_action_just_pressed(a[button]+"_up") or Input.is_action_just_pressed(a[button]+"2_up"))) or (flicking == 2 && (Input.is_action_just_pressed(a[button]+"_down") or Input.is_action_just_pressed(a[button]+"2_down"))):
-				hit(false,false,hold)
 	
 	if holding:
 		if (get_value(main.note_array1,0) == self or get_value(main.note_array2,0) == self) && timing - b2s(4) <= fail_time_before: #MUDEI ISTO, ANTES: $Timer.time_left - b2s(duration) - b2s(start_time)
@@ -231,18 +230,45 @@ func _process(delta):
 					hit(false,false,true)
 				if !double && ((Input.is_action_just_released(a[button]) && !holding_second) or (Input.is_action_just_released(a[button]+"2") && holding_second)):
 					hit(false,false,true)
-			else:
+			elif flicking == 0:
 				#debug(str($Timer.time_left) +","+ str(b2s(duration)) +","+ str(b2s(start_time)))
 				flicking = flick
 				flicking_second = holding_second
-				#holding = false
+				flick_frame = true
+				debug("Started flicking!")
 				$Timer2.start()
 		else:
 			if ((Input.is_action_just_released(a[button]) && !holding_second) or (Input.is_action_just_released(a[button]+"2") && holding_second)):
 				hit(true,false,true)
 
+func _input(event: InputEvent) -> void:
+	if flick_frame && (event is InputEventScreenTouch or event is InputEventScreenDrag):
+		if (event.position.x < 480 && !flicking_second) or (event.position.x > 480 && flicking_second):
+			flick_start_pos = event.position.y
+			flick_frame = false
+			debug("Flick pos determined: "+str(event.position.y))
+	
+	if flicking && !flick_frame && (event is InputEventScreenTouch or event is InputEventScreenDrag):
+		debug("Step 1")
+		if !double:
+			if (event.position.x < 480 && !flicking_second) or (event.position.x > 480 && flicking_second):
+				debug("Step 2 - flick_start_pos: "+str(flick_start_pos)+"; position.y: "+str(event.position.y)+"; delta: "+str(event.position.y-flick_start_pos))
+				if (flicking == 1 && event.position.y-flick_start_pos <= -flick_threshold) or (flicking == 2 && event.position.y-flick_start_pos >= flick_threshold):
+					debug("Flicked!")
+					hit(false,false,hold)
+		else:
+			if (flicking == 1 && event.position.y-flick_start_pos <= -flick_threshold) or (flicking == 2 && event.position.y-flick_start_pos >= flick_threshold):
+				debug("Flicked!")
+				hit(false,false,hold)
+		#if !double:
+			#if (flicking == 1 && ((!flicking_second && Input.is_action_just_pressed(a[button]+"_up")) or (flicking_second && Input.is_action_just_pressed(a[button]+"2_up")))) or (flicking == 2 && ((!flicking_second && Input.is_action_just_pressed(a[button]+"_down")) or (flicking_second && Input.is_action_just_pressed(a[button]+"2_down")))):
+				#hit(false,false,hold)
+		#else:
+			#if (flicking == 1 && (Input.is_action_just_pressed(a[button]+"_up") or Input.is_action_just_pressed(a[button]+"2_up"))) or (flicking == 2 && (Input.is_action_just_pressed(a[button]+"_down") or Input.is_action_just_pressed(a[button]+"2_down"))):
+				#hit(false,false,hold)
+
 func debug(text):
-	$"../../Label7".text = text
+	$"../../Label7".text += text+"\n"
 
 func hit(miss = false, start_hold = false, holded = false):
 	if ((second_voice && main.frame_hit2) or (!second_voice && main.frame_hit1)):

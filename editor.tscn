@@ -66,10 +66,10 @@ metadata/_edit_lock_ = true
 
 [node name="wait_time" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 232.0
-offset_top = 68.0
-offset_right = 300.5625
-offset_bottom = 99.0
+offset_left = 216.00002
+offset_top = 36.0
+offset_right = 284.5625
+offset_bottom = 67.0
 scale = Vector2(1.4, 1.4)
 text = "0"
 
@@ -85,10 +85,10 @@ horizontal_alignment = 2
 
 [node name="bpm" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 68.0
-offset_right = 500.5625
-offset_bottom = 99.0
+offset_left = 424.00003
+offset_top = 36.0
+offset_right = 492.56253
+offset_bottom = 67.0
 scale = Vector2(1.4, 1.4)
 text = "120"
 
@@ -104,10 +104,10 @@ horizontal_alignment = 2
 
 [node name="beats" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 231.99998
-offset_top = 132.0
-offset_right = 300.5625
-offset_bottom = 163.0
+offset_left = 216.0
+offset_top = 100.0
+offset_right = 284.5625
+offset_bottom = 131.0
 scale = Vector2(1.4, 1.4)
 text = "4"
 
@@ -123,10 +123,10 @@ horizontal_alignment = 2
 
 [node name="division" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 431.99997
-offset_top = 132.0
-offset_right = 500.56247
-offset_bottom = 163.0
+offset_left = 424.0
+offset_top = 100.0
+offset_right = 492.5625
+offset_bottom = 131.0
 scale = Vector2(1.4, 1.4)
 text = "2"
 
@@ -142,10 +142,10 @@ horizontal_alignment = 2
 
 [node name="speed" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 231.99998
-offset_top = 196.0
-offset_right = 300.5625
-offset_bottom = 227.0
+offset_left = 216.0
+offset_top = 164.0
+offset_right = 284.5625
+offset_bottom = 195.0
 scale = Vector2(1.4, 1.4)
 text = "1"
 
@@ -161,10 +161,10 @@ horizontal_alignment = 2
 
 [node name="difficulty" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 112.00001
-offset_top = 300.00003
-offset_right = 180.5625
-offset_bottom = 331.00003
+offset_left = 423.99997
+offset_top = 164.00005
+offset_right = 492.56247
+offset_bottom = 195.00005
 scale = Vector2(1.4, 1.4)
 text = "2"
 
@@ -197,10 +197,10 @@ horizontal_alignment = 2
 
 [node name="producer" type="LineEdit" parent="settings"]
 layout_mode = 0
-offset_left = 792.0
-offset_top = 292.0
-offset_right = 888.0
-offset_bottom = 323.0
+offset_left = 640.0
+offset_top = 164.00003
+offset_right = 736.0
+offset_bottom = 195.00003
 scale = Vector2(1.4, 1.4)
 
 [node name="Label" type="Label" parent="settings/producer"]
@@ -222,10 +222,10 @@ scale = Vector2(1.4, 1.4)
 
 [node name="completed" type="CheckBox" parent="settings"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 364.00003
-offset_right = 153.0
-offset_bottom = 395.00003
+offset_left = 32.0
+offset_top = 236.00003
+offset_right = 145.0
+offset_bottom = 267.00003
 scale = Vector2(1.4, 1.4)
 text = "Completed"
 

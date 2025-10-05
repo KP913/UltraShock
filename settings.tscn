@@ -167,10 +167,10 @@ text = "FPS Counter"
 
 [node name="Pitch" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 352.0
-offset_right = 132.562
-offset_bottom = 383.0
+offset_left = 55.999996
+offset_top = 24.000004
+offset_right = 124.5625
+offset_bottom = 55.000004
 scale = Vector2(0.7, 0.7)
 
 [node name="Label" type="Label" parent="Pitch"]

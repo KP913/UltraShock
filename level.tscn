@@ -488,10 +488,16 @@ offset_bottom = 448.0
 autostart = true
 
 [node name="Label7" type="Label" parent="."]
-offset_left = 368.0
-offset_top = 24.0
-offset_right = 408.0
-offset_bottom = 47.0
+visible = false
+clip_contents = true
+anchors_preset = -1
+offset_top = -96.0
+offset_right = 1952.0
+offset_bottom = 473.0
+grow_vertical = 0
+vertical_alignment = 2
+clip_text = true
+text_overrun_behavior = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

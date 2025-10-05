@@ -67,9 +67,13 @@ var speed_changes = []
 var hold1_sfx : AudioStreamPlayer
 var hold2_sfx : AudioStreamPlayer
 
+var subs_all = false
+
 var move_tween : Tween
 
 var key_locks = [false,false,false,false,false,false,false,false]
+
+var controller = false
 
 var rainbow_shader = preload("res://rainbow.gdshader")
 
@@ -87,6 +91,7 @@ func _ready():
 	if info.has("speed"): speed_mult = float(info.speed)
 	song_name = info.name
 	
+	
 	if info.has("bpm_list"):
 		bpm_list = info.bpm_list
 	else:
@@ -97,6 +102,8 @@ func _ready():
 			speed_changes.append([i.speed,i.time/64])
 	print(speed_changes)
 	subtitles = info.subtitles
+	for i in subtitles:
+		if !i.has("ninths"): i.ninths = i.time/64*9
 	GL.bpm = bpm
 	GL.note_scores = [0,0,0,0,0]
 	GL.combo = 0
@@ -115,7 +122,7 @@ func _ready():
 	
 	if OS.get_name() == "Android":
 		$touch.show()
-	$Settings.update_from_gl()
+	update_settings()
 	setup_touch()
 	
 	for i in ["subs_jp","subs_ro","subs_en"]:
@@ -128,15 +135,9 @@ func _ready():
 			if i == "subs_en": subs_en = z
 			#print(z)
 	
-	$syncer.wait_time = b2s(1)
-	$syncer.start(b2s(1))
-	
-	var tween = get_tree().create_tween()
-	tween.tween_property($notes,"position:y",-128,b2s(1))
-	move_tween = tween
 
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT: if OS.get_name() == "Android":
+	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT && !get_tree().paused && OS.get_name() == "Android":
 		$pause._on_Button_pressed()
 
 func setup_touch():
@@ -155,12 +156,15 @@ var temp3 = false
 func _process(delta):
 	key_locks.fill(false)
 	#print(bpm)
+	#print(bpm)
 	$Label8.visible = GL.settings.fps
 	$Label8.text = "FPS: "+str(Engine.get_frames_per_second())
-	$subs_en.visible = GL.settings.subs_en
-	$subs_ro.visible = GL.settings.subs_ro
-	$subs_jp.visible = GL.settings.subs_jp
-	
+	if !subs_all:
+		$subs_en.visible = GL.settings.subs_en
+		$subs_ro.visible = GL.settings.subs_ro
+		$subs_jp.visible = GL.settings.subs_jp
+	#else:
+
 	
 	if loading:
 		return
@@ -186,7 +190,7 @@ func _process(delta):
 	frame_hit2 = false
 	
 	if subtitles != []:
-		if beat >= subtitles[0].time/64:
+		if beat >= subtitles[0].ninths/9:
 			if !subtitles[0].clear:
 				if !subs_jp.is_empty():
 					while subs_jp[0] == "": subs_jp.remove_at(0)
@@ -208,11 +212,17 @@ func _process(delta):
 			
 			if ($subs_en.text == $subs_ro.text && $subs_en.text == $subs_jp.text) or ($subs_en.text == "" && $subs_jp.text == $subs_ro.text):
 				$subs_all.text = $subs_ro.text
+				subs_all = true
 				$subs_all.show()
 				$subs_en.hide()
 				$subs_ro.hide()
 				$subs_jp.hide()
-			else: $subs_all.hide()
+			else:
+				subs_all = false
+				$subs_all.hide()
+				$subs_en.show()
+				$subs_ro.show()
+				$subs_jp.show()
 	
 	if speed_changes != []:
 		if beat >= speed_changes[0][1]:
@@ -252,6 +262,36 @@ func _process(delta):
 			$syncer.stop()
 			$syncer.wait_time = b2s(1)
 			$syncer.start(b2s(1))
+
+func update_settings():
+	$AudioStreamPlayer.volume_db = (GL.settings.song + GL.settings.master)/2 - 50
+	sfx_volume = (GL.settings.sfx + GL.settings.master)/2 - 50
+	if GL.settings.master == 0 or GL.settings.song == 0: $AudioStreamPlayer.volume_db = -99999999999
+	$Control/Sprite2D.modulate.a = 1-GL.settings.brightness/100.0
+	
+	var c = int($subs_en.visible) + 2*int($subs_ro.visible) + 4*int($subs_jp.visible)
+	match c:
+		1: $subs_en.position.y = 24
+		2: $subs_ro.position.y = 24
+		4: $subs_jp.position.y = 24
+		3:
+			$subs_ro.position.y = 8
+			$subs_en.position.y = 40
+		5:
+			$subs_jp.position.y = 8
+			$subs_en.position.y = 40
+		6:
+			$subs_jp.position.y = 8
+			$subs_ro.position.y = 40
+		7:
+			$subs_jp.position.y = 0
+			$subs_ro.position.y = 24
+			$subs_en.position.y = 48
+	
+	Engine.time_scale = GL.settings.pitch
+	#$Control/VideoStreamPlayer.speed_scale = GL.settings.pitch
+	#print("SPEED: ",$Control/VideoStreamPlayer.speed_scale)
+	$AudioStreamPlayer.pitch_scale = GL.settings.pitch
 
 func resync():
 	pass
