@@ -490,7 +490,6 @@ autostart = true
 [node name="Label7" type="Label" parent="."]
 visible = false
 clip_contents = true
-anchors_preset = -1
 offset_top = -96.0
 offset_right = 1952.0
 offset_bottom = 473.0

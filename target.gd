@@ -101,7 +101,8 @@ func restart_tweens():
 		note_tween.kill()
 		var tween = get_tree().create_tween()
 		#print("a ",main.beat-start_beat)
-		tween.tween_property(self,"position:y",160-512,b2s((8-(main.beat-start_beat))/main.speed_mult))
+		tween.tween_property(self,"position:y",160-512,b2s((8/main.speed_mult-(main.beat-start_beat))))
+		#tween.tween_property(self,"position:y",160,b2s((8-(main.beat-start_beat))/main.speed_mult))
 		note_tween = tween
 	if hold_tween != null && hold_tween.is_valid():
 		hold_tween.kill()
@@ -123,12 +124,41 @@ func _process(delta):
 		restart_tweens()
 		c = 0
 	#print($note.position.y)
-	if hold: print(note_tween != null && note_tween.is_valid(),",",hold_tween != null && hold_tween.is_valid())
+	#if hold: print(note_tween != null && note_tween.is_valid(),",",hold_tween != null && hold_tween.is_valid())
 	#if stopped != -1: $note.position.y = stopped - get_parent().position.y
 	timing = b2s(start_time+4/main.speed_mult) - (main.beat - start_beat)*60/main.bpm
-	if timing == 0: hit()
+	#if timing == 0: hit()
 	#if time == 512: debug(str(timing))
 	#print($Timer.time_left,",",timing)
+	
+	if GL.godmode:
+		if !hold && b2s(start_time)-timing >= 0:
+			print("Start time: ",start_time)
+			print("Speed mult: ",main.speed_mult)
+			print("Beat: ",main.beat)
+			print("Start beat: ",start_beat)
+			print("BPM: ",main.bpm)
+			print("Position: ",position.y)
+			print()
+			print()
+			main.hit_sound("hit")
+			hit()
+		if hold:
+			if !holding && b2s(start_time)-timing >= 0:
+				hit(false,true)
+				holding = true
+				stopped = true#get_parent().position.y
+				#reparent($"../../notes_still")
+				unhold_time = main.beat
+				if note_tween != null:
+					note_tween.kill()
+					var tween2 = get_tree().create_tween()
+					tween2.tween_property($note2,"position:y",0,b2s(duration))
+					tween2.bind_node($note2)
+					hold_tween = tween2
+			if holding && b2s(start_time-duration)-timing >= 0:
+				main.hit_sound("hit")
+				hit()
 	
 	#if time == 512:
 		#debug(str(s2b($Timer.time_left))+","+str(time))

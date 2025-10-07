@@ -18,6 +18,8 @@ var sorted = ""
 var song = "pet_me"
 var editor_load = true
 
+const godmode = false
+
 var systemdir = "user://"
 
 var cached_levels = {}
