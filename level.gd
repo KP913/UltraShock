@@ -259,7 +259,10 @@ func _process(delta):
 		#temp3 = true
 		#hit_sound("hit")
 	if $AudioStreamPlayer.get_playback_position() >= song_length or ($AudioStreamPlayer.get_playback_position() == 0 && !loading && !syncing):
-		get_tree().change_scene_to_file("res://results.tscn")
+		if !GL.godmode:
+			get_tree().change_scene_to_file("res://results.tscn")
+		else:
+			get_tree().change_scene_to_file("res://menu.tscn")
 	
 	frame_hit = false
 	frame_hit1 = false
@@ -283,8 +286,9 @@ func _process(delta):
 			if !subtitles[0].clear:
 				if !subs_jp.is_empty():
 					while subs_jp[0] == "": subs_jp.remove_at(0)
-					$subs_jp.text = subs_jp[0]
-					subs_jp.remove_at(0)
+					set_text_jp()
+					#$subs_jp.text = subs_jp[0]
+					#subs_jp.remove_at(0)
 				if !subs_ro.is_empty():
 					while subs_ro[0] == "": subs_ro.remove_at(0)
 					$subs_ro.text = subs_ro[0]
@@ -355,6 +359,10 @@ func _process(delta):
 			#$syncer.stop()
 			#$syncer.wait_time = b2s(1)
 			#$syncer.start(b2s(1))
+
+func set_text_jp():
+	$subs_jp.text = subs_jp[0]
+	subs_jp.remove_at(0)
 
 func _input(event):
 	if event.is_action_pressed("circle") or event.is_action_pressed("circle2") or event.is_action_pressed("cross") or event.is_action_pressed("cross2") or event.is_action_pressed("square") or event.is_action_pressed("square2") or event.is_action_pressed("triangle") or event.is_action_pressed("triangle2"):

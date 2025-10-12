@@ -256,7 +256,10 @@ func _process(delta):
 		#temp3 = true
 		#hit_sound("hit")
 	if $AudioStreamPlayer.get_playback_position() >= song_length or ($AudioStreamPlayer.get_playback_position() == 0 && !loading && !syncing):
-		get_tree().change_scene_to_file("res://results.tscn")
+		if !GL.godmode:
+			get_tree().change_scene_to_file("res://results.tscn")
+		else:
+			get_tree().change_scene_to_file("res://menu.tscn")
 	
 	frame_hit = false
 	frame_hit1 = false

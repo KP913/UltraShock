@@ -158,7 +158,7 @@ func _process(delta):
 					hold_tween = tween2
 			if holding && b2s(start_time-duration)-timing >= 0:
 				main.hit_sound("hit")
-				hit()
+				hit(false,false,true)
 	
 	#if time == 512:
 		#debug(str(s2b($Timer.time_left))+","+str(time))
