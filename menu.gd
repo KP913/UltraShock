@@ -12,6 +12,8 @@ var refs_c = []
 var refs_u = []
 var active_refs = []
 
+var thumbs = {}
+
 var selected_c = 0
 var selected_u = 0
 var selected = 0
@@ -103,8 +105,8 @@ func _ready():
 	$Settings.add_theme_stylebox_override("panel",style)
 
 func update_settings():
-	pass
-
+	if GL.settings.thumbs: display_thumb(songs_showing[selected].song)
+	else: $Thumbnail.hide()
 
 func load_level(song,id):
 	#200 ms
@@ -206,6 +208,23 @@ func select_song(song):
 	for i in songs:
 		if i.song == song: b = i
 	selected = songs_showing.find(b)
+
+func display_thumb(song):
+	if GL.settings.thumbs:
+		var ext = ""
+		var a = FileAccess.file_exists(GL.systemdir+"songs/"+song+"/thumb.png")
+		var b = FileAccess.file_exists(GL.systemdir+"songs/"+song+"/thumb.jpg")
+		if a: ext = "png"
+		elif b: ext = "jpg"
+		if FileAccess.file_exists(GL.systemdir+"songs/"+song+"/thumb."+ext):
+			var thumb = Image.load_from_file(GL.systemdir+"songs/"+song+"/thumb."+ext)
+			$Thumbnail.texture = ImageTexture.create_from_image(thumb)
+			#$Thumbnail.scale.x = 384/float(thumb.get_size().x)
+			#$Thumbnail.scale.y = $Thumbnail.scale.x
+			#print(song,",",$Thumbnail.get_rect(),",",$Thumbnail.scale,",",thumb.get_size())
+			$Thumbnail.show()
+		else:
+			$Thumbnail.hide()
 
 func sort(type:String,refocus = true):
 	#print("type:",GL.settings.sorting)
@@ -329,6 +348,7 @@ func _input(event):
 		selected = wrapi(selected-1,0,songs_showing.size())
 		if completed: selected_c = selected
 		else: selected_u = selected
+		display_thumb(songs_showing[selected].song)
 		#GL.settings.last_song = songs_showing[selected].song
 		#GL.save()
 	if event.is_action_pressed("m_down"):
@@ -336,6 +356,7 @@ func _input(event):
 		selected = wrapi(selected+1,0,songs_showing.size())
 		if completed: selected_c = selected
 		else: selected_u = selected
+		display_thumb(songs_showing[selected].song)
 		#GL.settings.last_song = songs_showing[selected].song
 		#GL.save()
 	if event.is_action_pressed("m_accept"):

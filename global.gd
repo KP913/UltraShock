@@ -36,7 +36,7 @@ func _init():
 		q.close()
 	else:
 		var q = FileAccess.open(systemdir+"settings.json",2)
-		settings = {"master":50,"song":50,"sfx":50,"vibration":40,"brightness":50,"subs_jp":true,"subs_ro":true,"subs_en":true,"lposx":150,"lposy":500,"rposx":1050,"rposy":500,"lscale":13,"rscale":13,"ldist":80,"rdist":80,"last_song":"","sorting":"score","sync":0.0,"fps":false,"pitch":1,"gamemode":0}
+		settings = {"master":50,"song":50,"sfx":50,"vibration":40,"brightness":50,"subs_jp":true,"subs_ro":true,"subs_en":true,"lposx":150,"lposy":500,"rposx":1050,"rposy":500,"lscale":13,"rscale":13,"ldist":80,"rdist":80,"last_song":"","sorting":"score","sync":0.0,"fps":false,"pitch":1,"gamemode":0,"thumbs":true}
 		q.store_string(JSON.stringify(settings))
 		q.close()
 

@@ -17,6 +17,9 @@ var checkpoint = 0
 
 var color = Color(1,1,1,1)
 var selected = false
+var just_selected = true
+
+var thumb
 
 var gonna_touch = false
 
@@ -88,6 +91,11 @@ func _ready():
 	$Label3.text = secs2mins(snapped(length,1))
 
 func _process(delta: float) -> void:
+	if selected && just_selected:
+		main.display_thumb(song)
+		just_selected = false
+	if !selected: just_selected = true
+	
 	if selected:
 		self_modulate = color.blend(Color(1,1,1,0.8))
 		#self_modulate = color.blend(Color(1,1,0))

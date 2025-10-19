@@ -8,15 +8,16 @@
 [ext_resource type="Script" uid="uid://bel1k7nq45m47" path="res://pause.gd" id="6_2hion"]
 [ext_resource type="PackedScene" uid="uid://baowfc76krwer" path="res://settings.tscn" id="7_6do3u"]
 
-[sub_resource type="Gradient" id="Gradient_km5ld"]
+[sub_resource type="Gradient" id="Gradient_poi1f"]
 colors = PackedColorArray(0.12, 0.12, 0.12, 1, 0.2, 0.2, 0.2, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_i2t4f"]
-gradient = SubResource("Gradient_km5ld")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f0v22"]
+gradient = SubResource("Gradient_poi1f")
 fill_from = Vector2(0, 0.58209)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cye3"]
-texture = SubResource("GradientTexture2D_i2t4f")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgypu"]
+texture = SubResource("GradientTexture2D_f0v22")
+modulate_color = Color(1, 1, 1, 0.623529)
 
 [sub_resource type="Gradient" id="Gradient_n6hdu"]
 offsets = PackedFloat32Array(0, 0.8, 1)
@@ -155,7 +156,7 @@ offset_left = 88.0
 offset_top = 504.0
 offset_right = 928.0
 offset_bottom = 536.0
-theme_override_styles/background = SubResource("StyleBoxTexture_8cye3")
+theme_override_styles/background = SubResource("StyleBoxTexture_qgypu")
 theme_override_styles/fill = SubResource("StyleBoxTexture_i2t4f")
 show_percentage = false
 
