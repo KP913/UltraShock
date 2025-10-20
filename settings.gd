@@ -16,31 +16,31 @@ func _ready():
 		
 		var scroll = ScrollContainer.new()
 		scroll.size = Vector2(320,280)
+		scroll.name = i[0]
 		#scroll.position = Vector2(192,104)
 		var c = VBoxContainer.new()
 		c.custom_minimum_size = Vector2(320,0)
-		c.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		#c.size_flags_horizontal = Control.SIZE_FILL
 		for u in i[1]:
+			var k = Label.new()
+			k.position = Vector2(320-160+20,0)
+			k.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			k.text = u.title
+			k.layout_direction = Control.LAYOUT_DIRECTION_RTL
+			var j : Control
 			match u.type:
 				"bool":
-					var j = CheckBox.new()
-					j.text = u.title
-					j.set_meta("setting",u.setting)
-					c.add_child(j)
+					j = CheckBox.new()
 				"float":
-					var j = LineEdit.new()
-					var k = Label.new()
-					k.position = Vector2(80,0)
-					j.add_child(k)
-					j.set_meta("setting",u.setting)
-					c.add_child(j)
+					j = LineEdit.new()
 				"slider":
-					var j = HSlider.new()
-					var k = Label.new()
-					k.position = Vector2(80,0)
-					j.add_child(k)
-					j.set_meta("setting",u.setting)
-					c.add_child(j)
+					j = HSlider.new()
+			if j != null:
+				j.custom_minimum_size = Vector2(160,0)
+				j.size_flags_horizontal = Control.SIZE_SHRINK_END
+				j.add_child(k)
+				j.set_meta("setting",u.setting)
+				c.add_child(j)
 		scroll.hide()
 		scroll.add_child(c)
 		$Settings.add_child(scroll)
@@ -52,7 +52,8 @@ func open_tab(ref):
 			i.button_pressed = false
 	
 	for i in $Settings.get_children():
-		i.visible =  i.name == ref.name
+		print(i.name,",",ref.name)
+		i.visible = i.name == ref.name
 
 func start():
 	$Master.value = GL.settings.master

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://baowfc76krwer"]
 
-[ext_resource type="Script" uid="uid://buha02kok7jjn" path="res://settings.gd" id="1_yayic"]
+[ext_resource type="Script" uid="uid://b35o7b28kmh2q" path="res://settings.gd" id="1_yayic"]
 
 [node name="Settings" type="Panel"]
 process_mode = 3
@@ -10,6 +10,7 @@ script = ExtResource("1_yayic")
 metadata/_edit_lock_ = true
 
 [node name="Master" type="HSlider" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 56.00006
 offset_top = 160.0
@@ -26,6 +27,7 @@ text = "Master volume: "
 horizontal_alignment = 1
 
 [node name="Song" type="HSlider" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 56.00006
 offset_top = 224.0
@@ -42,6 +44,7 @@ text = "Song volume: "
 horizontal_alignment = 1
 
 [node name="SFX" type="HSlider" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 56.00006
 offset_top = 288.0
@@ -58,6 +61,7 @@ text = "SFX volume: "
 horizontal_alignment = 1
 
 [node name="Vibration" type="HSlider" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 312.00006
 offset_top = 160.0
@@ -74,6 +78,7 @@ text = "Vibration: "
 horizontal_alignment = 1
 
 [node name="Brightness" type="HSlider" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 312.00006
 offset_top = 216.0
@@ -90,6 +95,7 @@ text = "Brightness"
 horizontal_alignment = 1
 
 [node name="Sync" type="LineEdit" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 416.00006
 offset_top = 80.0
@@ -105,17 +111,8 @@ text = "Sync:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 16.0
-offset_right = 320.0
-offset_bottom = 43.0
-scale = Vector2(1.5, 1.5)
-text = "Settings"
-horizontal_alignment = 1
-
 [node name="Label3" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 56.00006
 offset_top = 80.0
@@ -126,6 +123,7 @@ text = "Sound"
 horizontal_alignment = 1
 
 [node name="jp" type="CheckBox" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 320.00006
 offset_top = 240.0
@@ -134,6 +132,7 @@ offset_bottom = 271.0
 text = "Japanese subtitles"
 
 [node name="ro" type="CheckBox" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 320.00006
 offset_top = 272.0
@@ -142,6 +141,7 @@ offset_bottom = 303.0
 text = "Romaji subtitles"
 
 [node name="en" type="CheckBox" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 320.00006
 offset_top = 304.0
@@ -150,6 +150,7 @@ offset_bottom = 335.0
 text = "English subtitles"
 
 [node name="fps" type="CheckBox" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 392.0
 offset_top = 40.0
@@ -158,6 +159,7 @@ offset_bottom = 71.0
 text = "FPS Counter"
 
 [node name="thumbs" type="CheckBox" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 392.0
 offset_top = 344.0
@@ -166,6 +168,7 @@ offset_bottom = 375.0
 text = "Thumbnails"
 
 [node name="Pitch" type="LineEdit" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 48.00006
 offset_top = 40.000004
@@ -181,6 +184,7 @@ offset_bottom = 23.0
 text = "Pitch:"
 
 [node name="Funny" type="OptionButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 16.000061
 offset_top = 336.0
@@ -201,8 +205,27 @@ popup/item_4/id = 3
 popup/item_5/text = "Funny 4"
 popup/item_5/id = 4
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 43.0
+scale = Vector2(1.5, 1.5)
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = -104.0
+offset_right = 234.66666
+offset_bottom = -77.0
+scale = Vector2(1.5, 1.5)
+text = "aaaa"
+horizontal_alignment = 2
+
 [node name="Tabs" type="ScrollContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 104.0
 offset_right = 160.0
@@ -213,7 +236,6 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_left = 224.0
 offset_top = 104.0
