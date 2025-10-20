@@ -19,6 +19,7 @@ func _ready():
 		scroll.name = i[0]
 		#scroll.position = Vector2(192,104)
 		var c = VBoxContainer.new()
+		c.name = "C"
 		c.custom_minimum_size = Vector2(320,0)
 		#c.size_flags_horizontal = Control.SIZE_FILL
 		for u in i[1]:
@@ -52,38 +53,61 @@ func open_tab(ref):
 			i.button_pressed = false
 	
 	for i in $Settings.get_children():
-		print(i.name,",",ref.name)
+		#print(i.name,",",ref.name)
 		i.visible = i.name == ref.name
 
 func start():
-	$Master.value = GL.settings.master
-	$Song.value = GL.settings.song
-	$SFX.value = GL.settings.sfx
-	$Sync.text = str(GL.settings.sync)
-	$Vibration.value = GL.settings.vibration
-	$Brightness.value = GL.settings.brightness
-	$jp.button_pressed = GL.settings.subs_jp
-	$ro.button_pressed = GL.settings.subs_ro
-	$en.button_pressed = GL.settings.subs_en
-	$fps.button_pressed = GL.settings.fps
-	$Pitch.text = str(GL.settings.pitch)
-	$Funny.selected = GL.settings.gamemode
-	$thumbs.button_pressed = GL.settings.thumbs
+	for i in $Settings.get_children():
+		for u in i.get_node("C").get_children():
+			if GL.settings.has(u.get_meta("setting")):
+				var s = GL.settings[u.get_meta("setting")]
+				if u is CheckBox:
+					u.button_pressed = s
+				if u is LineEdit:
+					u.text = str(s)
+				if u is HSlider:
+					u.value = s
+	
+	#$Master.value = GL.settings.master
+	#$Song.value = GL.settings.song
+	#$SFX.value = GL.settings.sfx
+	#$Sync.text = str(GL.settings.sync)
+	#$Vibration.value = GL.settings.vibration
+	#$Brightness.value = GL.settings.brightness
+	#$jp.button_pressed = GL.settings.subs_jp
+	#$ro.button_pressed = GL.settings.subs_ro
+	#$en.button_pressed = GL.settings.subs_en
+	#$fps.button_pressed = GL.settings.fps
+	#$Pitch.text = str(GL.settings.pitch)
+	#$Funny.selected = GL.settings.gamemode
+	#$thumbs.button_pressed = GL.settings.thumbs
 
 func save():
-	GL.settings.master = $Master.value
-	GL.settings.song = $Song.value
-	GL.settings.sfx = $SFX.value
-	GL.settings.sync = float($Sync.text)
-	GL.settings.vibration = $Vibration.value
-	GL.settings.brightness = $Brightness.value
-	GL.settings.subs_jp = $jp.button_pressed
-	GL.settings.subs_ro = $ro.button_pressed
-	GL.settings.subs_en = $en.button_pressed
-	GL.settings.fps = $fps.button_pressed
-	GL.settings.pitch = float($Pitch.text)
-	GL.settings.gamemode = $Funny.selected
-	GL.settings.thumbs = $thumbs.button_pressed
+	for i in $Settings.get_children():
+		for u in i.get_node("C").get_children():
+			print(u)
+			var s = u.get_meta("setting")
+			if u is CheckBox:
+				GL.settings[s] = u.button_pressed
+			if u is LineEdit:
+				GL.settings[s] = float(u.text)
+			if u is HSlider:
+				GL.settings[s] = u.value
+			print(s,",",GL.settings.s)
+	print(GL.settings)
+	#GL.settings.master = $Master.value
+	#GL.settings.song = $Song.value
+	#GL.settings.sfx = $SFX.value
+	#GL.settings.sync = float($Sync.text)
+	#GL.settings.vibration = $Vibration.value
+	#GL.settings.brightness = $Brightness.value
+	#GL.settings.subs_jp = $jp.button_pressed
+	#GL.settings.subs_ro = $ro.button_pressed
+	#GL.settings.subs_en = $en.button_pressed
+	#GL.settings.fps = $fps.button_pressed
+	#GL.settings.pitch = float($Pitch.text)
+	#GL.settings.gamemode = $Funny.selected
+	#GL.settings.thumbs = $thumbs.button_pressed
 
 func _on_button_pressed():
 	save()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://baowfc76krwer"]
 
-[ext_resource type="Script" uid="uid://b35o7b28kmh2q" path="res://settings.gd" id="1_yayic"]
+[ext_resource type="Script" uid="uid://buha02kok7jjn" path="res://settings.gd" id="1_yayic"]
 
 [node name="Settings" type="Panel"]
 process_mode = 3
@@ -214,16 +214,6 @@ offset_bottom = 43.0
 scale = Vector2(1.5, 1.5)
 text = "Settings"
 horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 176.0
-offset_top = -104.0
-offset_right = 234.66666
-offset_bottom = -77.0
-scale = Vector2(1.5, 1.5)
-text = "aaaa"
-horizontal_alignment = 2
 
 [node name="Tabs" type="ScrollContainer" parent="."]
 layout_mode = 0
