@@ -67,6 +67,7 @@ var chances = []
 var loading = true
 
 var sfx_volume = 0
+var chance_volume = 0
 
 var subtitles = []
 var subs_jp = []
@@ -269,7 +270,7 @@ func _process(delta):
 	frame_hit2 = false
 	
 	if level != []:
-		next_time = (level[note_count].time/64)-4/speed_mult
+		next_time = (level[note_count].time/64)-4
 		if beat >= next_time:
 			spawn_note(level[note_count])
 			level.remove_at(note_count)
@@ -359,6 +360,14 @@ func _process(delta):
 			#$syncer.stop()
 			#$syncer.wait_time = b2s(1)
 			#$syncer.start(b2s(1))
+	
+	if speed_changes != []:
+		if beat >= speed_changes[0][1]:
+			speed_mult = speed_changes[0][0]
+			speed_changes.remove_at(0)
+			for i in $notes.get_children():
+				i.restart_tweens()
+			
 
 func set_text_jp():
 	$subs_jp.text = subs_jp[0]
@@ -388,10 +397,29 @@ func spawn_note(info):
 	
 	var note = preload("res://target.tscn").instantiate()
 	
+	var speed_mults = []
+	var accum = 0
+	var gap = info.time/64-beat
+	var a = [[speed_mult,beat]]+speed_changes
+	for i in len(a):
+		if a[i][1] <= info.time/64:
+			#print(a[i][1],",",gap)
+			if i == len(a)-1 or a[i+1][1] > info.time/64:
+				speed_mults += [[a[i][0],(info.time/64-a[i][1])/gap]]
+				accum += a[i][0] * (info.time/64-a[i][1])/gap
+			else:
+				speed_mults += [[a[i][0],(a[i+1][1]-a[i][1])/gap]]
+				accum += a[i][0] * (a[i+1][1]-a[i][1])/gap
+	print(speed_mults)
+	print(accum)
+	
+	
 	if info.second_voice: note.position.x = 512
 	else: note.position.x = 448
-	note.position.y = 672 - (beat-((info.time/64)-4/speed_mult))*128*speed_mult #160+512
-	note.start_time -= beat-((info.time/64)-4/speed_mult)
+	note.position.y = 160 + 128*(info.time/64 - beat)*accum
+	#note.position.y = 672 - (beat-((info.time/64)-4))*128*accum #160+512
+	print("bbbbb",note.position.y)
+	note.start_time -= beat-((info.time/64)-4)
 	#print(note.global_position,$notes.position,beat)
 	#note.button = info.button
 	#note.type = info.type
@@ -473,7 +501,7 @@ func note_hit(note, text:String, hitted, miss, hold = false, chance_note = false
 				if i.get_playback_position() < 0.2 && i.stream == preload("res://sfx/hit.wav"):
 					i.queue_free()
 		if chance_note && !holded && hitted:
-			hit_sound("chance",7)
+			hit_sound("chance",9)
 			if controller: Input.start_joy_vibration(0,0.8,0.8,0.6)
 		elif note.final && !hold:
 			hit_sound("final",-2)
@@ -643,6 +671,7 @@ func load_song():
 func update_settings():
 	$AudioStreamPlayer.volume_db = (GL.settings.song + GL.settings.master)/2 - 50
 	sfx_volume = (GL.settings.sfx + GL.settings.master)/2 - 50
+	#chance_volume = 
 	if GL.settings.master == 0 or GL.settings.song == 0: $AudioStreamPlayer.volume_db = -99999999999
 	$Control/Sprite2D.modulate.a = 1-GL.settings.brightness/100.0
 	

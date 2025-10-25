@@ -101,7 +101,7 @@ func restart_tweens():
 		note_tween.kill()
 		var tween = get_tree().create_tween()
 		#print("a ",main.beat-start_beat)
-		tween.tween_property(self,"position:y",160-512,b2s((8/main.speed_mult-(main.beat-start_beat))))
+		tween.tween_property(self,"position:y",160-512,b2s(time/64-main.beat+4/main.speed_mult))
 		#tween.tween_property(self,"position:y",160,b2s((8-(main.beat-start_beat))/main.speed_mult))
 		note_tween = tween
 	if hold_tween != null && hold_tween.is_valid():
@@ -123,10 +123,13 @@ func _process(delta):
 	if c == 15:
 		restart_tweens()
 		c = 0
+		
+	if time == 192: print("AAAAAAAAAAAAAA",position.y)
+	
 	#print($note.position.y)
 	#if hold: print(note_tween != null && note_tween.is_valid(),",",hold_tween != null && hold_tween.is_valid())
 	#if stopped != -1: $note.position.y = stopped - get_parent().position.y
-	timing = b2s(start_time+4/main.speed_mult) - (main.beat - start_beat)*60/main.bpm
+	timing = b2s(start_time+4) - (main.beat - start_beat)*60/main.bpm
 	#if timing == 0: hit()
 	#if time == 512: debug(str(timing))
 	#print($Timer.time_left,",",timing)

@@ -129,7 +129,7 @@ func _process(delta):
 			var last = note_times[note_array[-1]]
 			$"../Label".text = str(note_array[-1])
 			while last.ninths <= playing_pos:
-				if last.chance: hit_sound("chance",5)
+				if last.chance: hit_sound("chance",9)
 				elif !last.hold:
 					if last.final: hit_sound("final")
 					elif last.double: hit_sound("double")
@@ -458,7 +458,7 @@ func _input(event):
 				var a = LineEdit.new()
 				a.position = sub_pos
 				a.scale = Vector2(0.75,0.75)
-				a.modulate = Color.BLUE
+				a.modulate = Color.AQUA
 				a.set_meta("time",playing_pos*64/9)
 				a.set_meta("ninths",playing_pos)
 				$speed_changes.add_child(a)

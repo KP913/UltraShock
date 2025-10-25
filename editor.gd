@@ -149,6 +149,8 @@ func _on_save_pressed():
 	var q = FileAccess.open(GL.systemdir+"songs/"+info.song+"/level.lvl",2)
 	q.store_string(JSON.new().stringify(info))
 	q.close()
+	
+	GL.song = $settings/song.text
 
 
 func _on_load_pressed():
@@ -236,6 +238,18 @@ func _on_load_pressed():
 			a.scale = Vector2(0.75,0.75)
 			a.text = str(i.bpm)
 			$timeline/time_changes.add_child(a)
+	if info.has("speed_changes"):
+		for i in info.speed_changes:
+			var a = LineEdit.new()
+			a.modulate = Color.AQUA
+			a.set_meta("time",i.time)
+			if !i.has("ninths"): i.ninths = i.time/64*9
+			a.set_meta("ninths",i.ninths)
+			a.position.x = fmod(i.ninths,72)/9*64
+			a.position.y = floor(i.ninths/72.0)*128-32
+			a.scale = Vector2(0.75,0.75)
+			a.text = str(i.speed)
+			$timeline/speed_changes.add_child(a)
 	if info.has("checkpoint"):
 		if info.checkpoint.size() == 2: info.checkpoint.append(info.checkpoint[0]/64*9)
 		var time = info.checkpoint[0]
