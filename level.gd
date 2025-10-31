@@ -410,13 +410,14 @@ func spawn_note(info):
 			else:
 				speed_mults += [[a[i][0],(a[i+1][1]-a[i][1])/gap]]
 				accum += a[i][0] * (a[i+1][1]-a[i][1])/gap
-	print(speed_mults)
-	print(accum)
+	#print(speed_mults)
+	#print("aaa",accum)
 	
 	
 	if info.second_voice: note.position.x = 512
 	else: note.position.x = 448
 	note.position.y = 160 + 128*(info.time/64 - beat)*accum
+	note.get_node("note2").position.y = 128*info.duration*accum
 	#note.position.y = 672 - (beat-((info.time/64)-4))*128*accum #160+512
 	print("bbbbb",note.position.y)
 	note.start_time -= beat-((info.time/64)-4)

@@ -53,7 +53,7 @@ func _ready():
 	$Timer2.wait_time = flick_timing
 	#$note.position = Vector2(0,512)#.rotated(deg_to_rad(dir))
 	#$note2.position = Vector2(0,512+128*duration)#.rotated(deg_to_rad(dir))
-	$note2.position = Vector2(0,128*duration*main.speed_mult)
+	
 	
 	
 	#if OS.get_name() != "Android": flick = 0
@@ -101,7 +101,10 @@ func restart_tweens():
 		note_tween.kill()
 		var tween = get_tree().create_tween()
 		#print("a ",main.beat-start_beat)
-		tween.tween_property(self,"position:y",160-512,b2s(time/64-main.beat+4/main.speed_mult))
+		#tween.tween_property(self,"position:y",160,b2s(time/64-main.beat))
+		#tween.finished.connect(extra_time)
+		
+		tween.tween_property(self,"position:y",160-128,b2s(time/64-main.beat+1/main.speed_mult))
 		#tween.tween_property(self,"position:y",160,b2s((8-(main.beat-start_beat))/main.speed_mult))
 		note_tween = tween
 	if hold_tween != null && hold_tween.is_valid():
@@ -111,6 +114,11 @@ func restart_tweens():
 		tween2.tween_property($note2,"position:y",0,b2s(duration-(main.beat-unhold_time)))
 		tween2.bind_node($note2)
 		hold_tween = tween2
+
+func extra_time():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"position:y",160-512,b2s(time/64+4-main.beat))
+	note_tween = tween
 
 func _physics_process(delta: float) -> void:
 	var off = 0.05

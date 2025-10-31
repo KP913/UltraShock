@@ -3,7 +3,7 @@ extends Panel
 @onready var m = $".."
 
 func _ready():
-	if OS.get_name() == "Android": $Vibration.show()
+	#if OS.get_name() == "Android": $Vibration.show()
 	
 	for i in settings:
 		var a = Button.new()
@@ -93,7 +93,7 @@ func save():
 				GL.settings[s] = float(u.text)
 			if u is HSlider:
 				GL.settings[s] = u.value
-			print(s,",",GL.settings.s)
+			#print(s,",",GL.settings.s)
 	print(GL.settings)
 	#GL.settings.master = $Master.value
 	#GL.settings.song = $Song.value
