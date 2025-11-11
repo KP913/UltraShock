@@ -419,8 +419,11 @@ func spawn_note(info):
 	note.position.y = 160 + 128*(info.time/64 - beat)*accum
 	note.get_node("note2").position.y = 128*info.duration*accum
 	#note.position.y = 672 - (beat-((info.time/64)-4))*128*accum #160+512
-	print("bbbbb",note.position.y)
-	note.start_time -= beat-((info.time/64)-4)
+	#print("bbbbb",note.position.y)
+	print("START TIME: ",note.start_time)
+	#note.start_time -= beat-((info.time/64)-4)
+	#2.5
+	print("START TIME: ",beat,",",info.time/64,",",note.start_time)
 	#print(note.global_position,$notes.position,beat)
 	#note.button = info.button
 	#note.type = info.type
