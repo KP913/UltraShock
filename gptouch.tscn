@@ -28,7 +28,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 7
 
 [node name="up" type="TouchScreenButton" parent="left/TouchScreenButton5"]
@@ -73,7 +73,7 @@ visibility_mode = 1
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 6
 
 [node name="up" type="TouchScreenButton" parent="left/TouchScreenButton6"]
@@ -118,7 +118,7 @@ visibility_mode = 1
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 5
 
 [node name="up" type="TouchScreenButton" parent="left/TouchScreenButton7"]
@@ -163,7 +163,7 @@ visibility_mode = 1
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 4
 
 [node name="up" type="TouchScreenButton" parent="left/TouchScreenButton8"]
@@ -211,7 +211,7 @@ visibility_mode = 1
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 7
 
 [node name="up" type="TouchScreenButton" parent="right/TouchScreenButton9"]
@@ -257,7 +257,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 6
 
 [node name="up" type="TouchScreenButton" parent="right/TouchScreenButton10"]
@@ -303,7 +303,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 5
 
 [node name="up" type="TouchScreenButton" parent="right/TouchScreenButton11"]
@@ -349,7 +349,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("2_38dhb")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 4
 
 [node name="up" type="TouchScreenButton" parent="right/TouchScreenButton12"]

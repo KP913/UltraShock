@@ -1,0 +1,221 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvc5ccufqjkwp"]
+
+[ext_resource type="Script" uid="uid://buha02kok7jjn" path="res://settings.gd" id="1_yayic"]
+
+[node name="Settings" type="Panel"]
+process_mode = 3
+offset_right = 576.0
+offset_bottom = 384.0
+script = ExtResource("1_yayic")
+metadata/_edit_lock_ = true
+
+[node name="Master" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 200.0
+offset_right = 928.0
+offset_bottom = 216.0
+scrollable = false
+
+[node name="Label" type="Label" parent="Master"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 224.0
+offset_bottom = -9.0
+text = "Master volume: "
+horizontal_alignment = 1
+
+[node name="Song" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 264.0
+offset_right = 928.0
+offset_bottom = 280.0
+scrollable = false
+
+[node name="Label" type="Label" parent="Song"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 224.0
+offset_bottom = -9.0
+text = "Song volume: "
+horizontal_alignment = 1
+
+[node name="SFX" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 328.0
+offset_right = 928.0
+offset_bottom = 344.0
+scrollable = false
+
+[node name="Label" type="Label" parent="SFX"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 224.0
+offset_bottom = -9.0
+text = "SFX volume: "
+horizontal_alignment = 1
+
+[node name="Vibration" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 200.0
+offset_right = 1184.0
+offset_bottom = 216.0
+scrollable = false
+
+[node name="Label" type="Label" parent="Vibration"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 224.0
+offset_bottom = -9.0
+text = "Vibration: "
+horizontal_alignment = 1
+
+[node name="Brightness" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 256.0
+offset_right = 1184.0
+offset_bottom = 272.0
+scrollable = false
+
+[node name="Label" type="Label" parent="Brightness"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 224.0
+offset_bottom = -9.0
+text = "Brightness"
+horizontal_alignment = 1
+
+[node name="Sync" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 120.0
+offset_right = 1132.5625
+offset_bottom = 151.0
+
+[node name="Label" type="Label" parent="Sync"]
+layout_mode = 0
+offset_left = -96.0
+offset_right = -16.0
+offset_bottom = 32.0
+text = "Sync:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 43.0
+scale = Vector2(1.5, 1.5)
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 120.0
+offset_right = 853.0
+offset_bottom = 147.0
+scale = Vector2(1.5, 1.5)
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="jp" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 280.0
+offset_right = 1137.0
+offset_bottom = 311.0
+text = "Japanese subtitles"
+
+[node name="ro" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 312.0
+offset_right = 1137.0
+offset_bottom = 343.0
+text = "Romaji subtitles"
+
+[node name="en" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 344.0
+offset_right = 1137.0
+offset_bottom = 375.0
+text = "English subtitles"
+
+[node name="fps" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 72.0
+offset_right = 1209.0
+offset_bottom = 103.0
+text = "FPS Counter"
+
+[node name="Pitch" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 695.99994
+offset_top = 80.0
+offset_right = 764.56244
+offset_bottom = 111.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Label" type="Label" parent="Pitch"]
+layout_mode = 0
+offset_left = -57.1429
+offset_right = -13.1429
+offset_bottom = 23.0
+text = "Pitch:"
+
+[node name="Funny" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 663.99994
+offset_top = 376.0
+offset_right = 756.99994
+offset_bottom = 407.0
+scale = Vector2(0.7, 0.7)
+item_count = 6
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Cinema"
+popup/item_1/id = 5
+popup/item_2/text = "Funny 1"
+popup/item_2/id = 1
+popup/item_3/text = "Funny 2"
+popup/item_3/id = 2
+popup/item_4/text = "Funny 3"
+popup/item_4/id = 3
+popup/item_5/text = "Funny 4"
+popup/item_5/id = 4
+
+[node name="Tabs" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 160.0
+offset_bottom = 320.0
+
+[node name="C" type="VBoxContainer" parent="Tabs"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Settings" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 224.0
+offset_top = 104.0
+offset_right = 552.0
+offset_bottom = 320.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 344.0
+offset_right = 352.0
+offset_bottom = 376.0
+text = "Done"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

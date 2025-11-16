@@ -180,6 +180,14 @@ offset_bottom = 415.0
 text = "New best! Previous: 00.01%"
 horizontal_alignment = 2
 
+[node name="Label5" type="Label" parent="."]
+visible = false
+offset_left = 32.0
+offset_top = 464.0
+offset_right = 416.0
+offset_bottom = 487.0
+text = "New best combo! Previous: 100"
+
 [node name="Label3" type="Label" parent="."]
 offset_left = 376.0
 offset_top = 16.0

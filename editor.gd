@@ -71,7 +71,15 @@ func load_song():
 	$timeline.song_length = audio.get_length()
 
 func _on_load_song_pressed():
+	var new_song = $settings/song.text
 	load_song()
+	
+	if FileAccess.file_exists(GL.systemdir+"songs/"+new_song+"/subs_ro.txt"):
+		var w = FileAccess.open(GL.systemdir+"songs/"+new_song+"/subs_ro.txt",FileAccess.READ)
+		var z = w.get_as_text().split("\n")
+		while z.find("") != -1:
+			z.remove_at(z.find(""))
+		$timeline.subs_ro = z
 
 func sort_key(a:String,b:String):
 	return int(a.split("p")[0]) < int(b.split("p")[0])

@@ -249,6 +249,10 @@ func _input(event):
 		ninths -= 72
 	if event.is_action_pressed("e_down"):
 		ninths += 72
+	if event.is_action_pressed("e_down_fast"):
+		ninths += 288
+	if event.is_action_pressed("e_up_fast"):
+		ninths -= 288
 	if event.is_action_pressed("e_voice"):
 		second_voice = !second_voice
 	

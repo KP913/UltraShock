@@ -97,7 +97,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("4_6p77l")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 26
 
 [node name="pause" type="Node2D" parent="."]

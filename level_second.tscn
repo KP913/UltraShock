@@ -190,7 +190,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("4_nglw8")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 26
 
 [node name="TouchScreenButton14" type="TouchScreenButton" parent="touch"]
@@ -206,7 +206,7 @@ metadata/_edit_group_ = true
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("4_nglw8")
 hframes = 4
-vframes = 8
+vframes = 10
 frame = 26
 
 [node name="gptouch" parent="touch" instance=ExtResource("5_xx3do")]

@@ -66,6 +66,8 @@ func save_score():
 					i.score = GL.score
 				i.total = GL.total_notes
 				if i.combo < GL.combo:
+					$Label5.show()
+					$Label5.text = "New best combo! Previous: "+str(int(i.combo))
 					i.combo = GL.combo
 		if !d:
 			b.append(dict)
