@@ -190,7 +190,6 @@ text = "No levels found! Create a new level or add some at "
 autowrap_mode = 3
 
 [node name="touch" type="Node2D" parent="."]
-visible = false
 texture_filter = 1
 
 [node name="TouchScreenButton12" type="TouchScreenButton" parent="touch"]
