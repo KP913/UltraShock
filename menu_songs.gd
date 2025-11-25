@@ -14,6 +14,7 @@ var times_played = 0
 var total = 0
 var id = 0
 var checkpoint = 0
+var preview = false
 
 var color = Color(1,1,1,1)
 var selected = false

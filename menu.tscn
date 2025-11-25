@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://dcu8vp0evit4v"]
 
-[ext_resource type="Script" uid="uid://dc1ax6mt0257t" path="res://menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://0e1csg8cf165" path="res://menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c23tp6sfxcl46" path="res://gfx/svg/settings.png" id="2_mae5d"]
 [ext_resource type="Texture2D" uid="uid://bvml3dyfbej6f" path="res://gfx/svg/touch.png" id="2_ouk20"]
-[ext_resource type="Script" uid="uid://cb68pd44t3iec" path="res://pause_button.gd" id="2_ytr4m"]
+[ext_resource type="Script" uid="uid://bbd58lnify01r" path="res://pause_button.gd" id="2_ytr4m"]
 [ext_resource type="PackedScene" uid="uid://baowfc76krwer" path="res://settings.tscn" id="4_4hy44"]
 
 [sub_resource type="Gradient" id="Gradient_mae5d"]
@@ -234,6 +234,8 @@ offset_bottom = 464.0
 position = Vector2(256, 296)
 enabled = false
 zoom = Vector2(0.5, 0.5)
+
+[node name="PreviewPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="Button8" to="Button8" method="_on_pressed"]
 [connection signal="item_selected" from="Sort" to="." method="_on_option_button_item_selected"]

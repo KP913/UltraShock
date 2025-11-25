@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmo4io40scf8m"]
 
-[ext_resource type="Script" uid="uid://clcaiggwvvg2f" path="res://menu_songs.gd" id="1"]
+[ext_resource type="Script" uid="uid://dxtefivs8hrm7" path="res://menu_songs.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwqio8uyxvr6d" path="res://gfx/stars.png" id="2_mqn5i"]
 
 [sub_resource type="Theme" id="Theme_mqn5i"]

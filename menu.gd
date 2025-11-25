@@ -36,6 +36,8 @@ var funny = 0
 var scores
 var settings_open = false
 
+var preview_playing = -1
+
 
 func _ready():
 	Engine.time_scale = 1
@@ -176,6 +178,7 @@ func p3(lvl,a,path,id,combo):
 		var v = 1
 		if lvl.checkpoint.size() > 2: v = 3
 		a.checkpoint = snappedi(100 * lvl.checkpoint[v] / a.length,1)
+	if lvl.has("preview"): a.preview = lvl.preview
 	#print(a.song,a.song_name)
 	a.id = id
 	a.name = str(id)
@@ -370,6 +373,18 @@ func _input(event):
 	if (event.is_action_released("left_click") or (event is InputEventScreenTouch && event.pressed == false)) && dragging:
 		dragging = false
 		drag_free = true
+	
+	if event.is_action_pressed("m_preview"):
+		var a = songs_showing[selected]
+		if preview_playing != -1:
+			preview_playing = -1
+			$PreviewPlayer.stop()
+		elif !a.nosong && a.preview != false:
+		#if FileAccess.file_exists(GL.systemdir+"/songs/"+songs_showing[selected].song+"/music.ogg")
+			$PreviewPlayer.stream = load(GL.systemdir+"/songs/"+songs_showing[selected].song+"/music.ogg")
+			$PreviewPlayer.play(a.preview)
+			preview_playing = selected
+			
 
 func secs2mins(s):
 	var secs = s
